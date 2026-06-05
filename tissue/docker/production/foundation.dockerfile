@@ -1,0 +1,26 @@
+FROM php:8.2.26-cli-bullseye as php
+
+RUN apt-get update \
+    && apt-get install -y git libpq-dev unzip libicu-dev \
+    && docker-php-ext-install pdo_pgsql intl \
+    && curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY . /app
+
+RUN composer install -n --no-dev --prefer-dist --optimize-autoloader
+
+FROM node:22.20.0-bullseye
+
+WORKDIR /app
+COPY --from=php /app /app
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+RUN corepack enable
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile \
+    && pnpm run prod \
+    && pnpm run doc

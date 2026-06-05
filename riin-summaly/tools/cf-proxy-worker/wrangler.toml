@@ -1,0 +1,26 @@
+# summaly outbound proxy worker (phase12.1)
+#
+# 初回デプロイ手順は README.md 参照。
+# 共有シークレットは `wrangler secret put SHARED_SECRET` で設定する（リポにコミットしないこと）。
+
+name = "summaly-proxy"
+main = "src/index.ts"
+compatibility_date = "2025-11-01"
+
+# Free プランで動かす想定。Paid プランへの自動切替は無いため、超過時は 429 で停止する（金額課金は発生しない）。
+
+[vars]
+# **phase18.1 で `ALLOWED_DOMAINS` 撤廃** (2026-05-10):
+#   - HMAC-SHA256 + 5 分タイムスタンプ窓で「secret を知る呼出元のみ通す」防御で十分と判断
+#   - secret 漏洩時は wrangler secret put SHARED_SECRET <new> で rotation
+#   - 旧設計: summaly 側 (config.toml の [scraping.proxy].domains) + Worker 側 (本 var) の二重 allowlist だったが、
+#     並列発火モデル (phase18 hedge race) と矛盾 + 新サイト追加で Worker redeploy 必要 = 運用負担が
+#     secret 漏洩時の追加防御の価値を上回ると判断して撤廃。
+#
+# 受信ボディ上限 (OGP 取得用途として 5 MiB)
+MAX_BODY_BYTES = "5242880"
+
+# タイムスタンプ検証窓（ミリ秒、5 分）
+TIMESTAMP_WINDOW_MS = "300000"
+
+# SHARED_SECRET は wrangler secret put SHARED_SECRET で設定する（vars に書かない）。

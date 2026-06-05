@@ -1,0 +1,11 @@
+
+
+
+
+
+# === github-sync: 以下文件不推送到 GitHub ===
+#backup_jsonl_final/
+.codebuddy/
+# === github-sync end ===
+report/
+backup_jsonl_final/

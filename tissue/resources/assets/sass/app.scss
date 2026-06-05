@@ -1,0 +1,29 @@
+// Bootstrap Variable Override
+$primary: #e53fb1;
+
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// Tabler Icons
+@import "@tabler/icons-webfont/dist/tabler-icons.css";
+
+// Legacy app styles
+@import "tissue.css";
+
+// Components
+@import "components/ejaculation";
+@import "components/link-card";
+@import "components/toast";
+
+// Status containerの後続要素との余白調整
+.tis-status-container + .mt-n1 {
+    margin-top: 0 !important;
+}
+
+.text-large {
+    font-size: large;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

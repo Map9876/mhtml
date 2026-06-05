@@ -1,0 +1,461 @@
+:root {
+	--bg: #0d1117;
+	--surface: #161b22;
+	--surface-2: #1f262e;
+	--border: #30363d;
+	--text: #e6edf3;
+	--text-dim: #8b949e;
+	--accent: #2f81f7;
+	--accent-hover: #58a6ff;
+	--danger: #f85149;
+	--warn: #d29922;
+	--success: #3fb950;
+	font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Helvetica Neue", sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	background: var(--bg);
+	color: var(--text);
+	min-height: 100vh;
+}
+
+header {
+	padding: 16px 24px;
+	border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+	margin: 0;
+	font-size: 20px;
+}
+
+.subtitle {
+	margin: 4px 0 0;
+	color: var(--text-dim);
+	font-size: 13px;
+}
+
+main {
+	display: grid;
+	grid-template-columns: minmax(360px, 1fr) minmax(420px, 2fr);
+	gap: 16px;
+	padding: 16px;
+	max-width: 1600px;
+	margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+	main {
+		grid-template-columns: 1fr;
+	}
+}
+
+section {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	padding: 16px;
+}
+
+label {
+	display: block;
+	font-size: 13px;
+	color: var(--text-dim);
+	margin-bottom: 4px;
+}
+
+input[type="url"], input[type="text"] {
+	width: 100%;
+	background: var(--surface-2);
+	color: var(--text);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	padding: 8px 10px;
+	font-size: 14px;
+	font-family: inherit;
+}
+
+input[type="url"]:focus, input[type="text"]:focus {
+	outline: none;
+	border-color: var(--accent);
+}
+
+button {
+	background: var(--accent);
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	padding: 8px 16px;
+	font-size: 14px;
+	cursor: pointer;
+	font-family: inherit;
+}
+
+button:hover {
+	background: var(--accent-hover);
+}
+
+button:disabled {
+	background: var(--surface-2);
+	color: var(--text-dim);
+	cursor: not-allowed;
+}
+
+.options {
+	margin-top: 12px;
+	padding: 8px 12px;
+	background: var(--surface-2);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+}
+
+.options summary {
+	cursor: pointer;
+	color: var(--text-dim);
+	font-size: 13px;
+	user-select: none;
+}
+
+.option-row {
+	margin-top: 8px;
+}
+
+.option-row.checkbox {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.option-row.checkbox label {
+	margin-bottom: 0;
+	color: var(--text);
+	font-size: 13px;
+}
+
+.hint {
+	display: block;
+	color: var(--text-dim);
+	font-size: 11px;
+	margin-top: 4px;
+}
+
+.plugin-checkboxes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 12px;
+	font-size: 13px;
+}
+
+.plugin-checkboxes label {
+	color: var(--text);
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin: 0;
+}
+
+#fetch-button {
+	margin-top: 12px;
+}
+
+.error {
+	margin-top: 12px;
+	padding: 8px 12px;
+	background: rgba(248, 81, 73, 0.15);
+	border: 1px solid var(--danger);
+	border-radius: 4px;
+	color: var(--danger);
+	font-size: 13px;
+	white-space: pre-wrap;
+}
+
+.samples {
+	margin-top: 16px;
+	padding-top: 12px;
+	border-top: 1px solid var(--border);
+}
+
+.samples h2 {
+	font-size: 14px;
+	margin: 0 0 8px;
+	color: var(--text-dim);
+}
+
+.sample-group {
+	margin-bottom: 14px;
+}
+
+.sample-group h3 {
+	margin: 0 0 4px;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.sample-group p {
+	margin: 0 0 6px;
+	color: var(--text-dim);
+	font-size: 11px;
+}
+
+.sample-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.sample-list a {
+	color: var(--accent-hover);
+	font-size: 12px;
+	text-decoration: none;
+	font-family: ui-monospace, "SF Mono", Consolas, monospace;
+	cursor: pointer;
+	word-break: break-all;
+}
+
+.sample-list a:hover {
+	text-decoration: underline;
+}
+
+.sample-list .note {
+	color: var(--text-dim);
+	font-size: 11px;
+	margin-left: 6px;
+}
+
+.result-split {
+	display: grid;
+	grid-template-columns: minmax(280px, 1fr) minmax(320px, 1fr);
+	gap: 16px;
+	margin: -16px;
+	padding: 0;
+}
+
+@media (max-width: 1100px) {
+	.result-split {
+		grid-template-columns: 1fr;
+	}
+}
+
+.json-column,
+.visual-column {
+	padding: 16px;
+	min-width: 0;
+}
+
+.json-column {
+	border-right: 1px solid var(--border);
+}
+
+@media (max-width: 1100px) {
+	.json-column {
+		border-right: none;
+		border-bottom: 1px solid var(--border);
+	}
+}
+
+.column-title {
+	font-size: 13px;
+	color: var(--text-dim);
+	margin: 0 0 8px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.tabs {
+	display: flex;
+	gap: 0;
+	border-bottom: 1px solid var(--border);
+	margin: 0 0 12px;
+	padding: 0;
+}
+
+.tab {
+	background: transparent;
+	color: var(--text-dim);
+	padding: 12px 16px;
+	border-radius: 0;
+	border-bottom: 2px solid transparent;
+	font-size: 13px;
+}
+
+.tab:hover {
+	color: var(--text);
+	background: transparent;
+}
+
+.tab.active {
+	color: var(--text);
+	border-bottom-color: var(--accent);
+}
+
+/* player.url が null のときの iframe タブ表示。クリックは可能、視覚的に「内容なし」を伝える */
+.tab.is-null {
+	color: var(--text-dim);
+	opacity: 0.55;
+	font-style: italic;
+}
+
+.tab.is-null::after {
+	content: ' (null)';
+	font-size: 11px;
+}
+
+.tab-pane {
+	min-height: 360px;
+	overflow: auto;
+}
+
+#pane-json {
+	margin: 0;
+	padding: 12px;
+	background: var(--surface-2);
+	border-radius: 4px;
+	color: var(--text);
+	font-family: ui-monospace, "SF Mono", Consolas, monospace;
+	font-size: 12px;
+	white-space: pre;
+	overflow: auto;
+	max-height: 640px;
+	min-height: 360px;
+}
+
+/* Misskey の Note timeline 風 compact mode カード */
+.mk-card {
+	display: flex;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	overflow: hidden;
+	background: var(--surface-2);
+	max-width: 640px;
+}
+
+/* 左: 正方形 thumbnail（無いときは要素ごと省略） */
+.mk-card .thumb {
+	flex: 0 0 120px;
+	width: 120px;
+	height: 120px;
+	background: var(--bg);
+	overflow: hidden;
+}
+
+.mk-card .thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* 右: meta */
+.mk-card .body {
+	flex: 1;
+	min-width: 0;
+	padding: 10px 14px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	overflow: hidden;
+}
+
+/* sitename 行: favicon + sitename を 1 行に */
+.mk-card .sitename-row {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 11px;
+	color: var(--text-dim);
+}
+
+.mk-card .favicon {
+	width: 14px;
+	height: 14px;
+	border-radius: 2px;
+	flex-shrink: 0;
+	object-fit: contain;
+	background: var(--bg);
+}
+
+.mk-card .sitename {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mk-card .title {
+	font-weight: 600;
+	font-size: 14px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.mk-card .description {
+	font-size: 12px;
+	color: var(--text-dim);
+	margin: 0;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	white-space: pre-wrap;
+}
+
+.mk-card .url {
+	font-size: 11px;
+	color: var(--text-dim);
+	margin-top: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mk-card .sensitive-label {
+	display: inline-block;
+	background: rgba(210, 153, 34, 0.2);
+	color: var(--warn);
+	padding: 2px 6px;
+	border-radius: 3px;
+	font-size: 11px;
+	align-self: flex-start;
+}
+
+#pane-player iframe {
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	width: 100%;
+	max-width: 720px;
+	/* max-height でも cap することで YouTube Shorts (9:16 縦長) が画面いっぱいに伸びるのを防ぐ。
+	   横長 (16:9 720x405) は width で先に頭打ちになるため影響なし。
+	   縦長は height = 600 / aspect-ratio までに収まる（9:16 なら ~338px 幅）。 */
+	max-height: 600px;
+	display: block;
+}
+
+#pane-player .player-meta {
+	color: var(--text-dim);
+	font-size: 11px;
+	margin-bottom: 8px;
+	font-family: ui-monospace, "SF Mono", Consolas, monospace;
+}
+
+#pane-player .empty {
+	color: var(--text-dim);
+	font-size: 13px;
+}
+
+code {
+	font-family: ui-monospace, "SF Mono", Consolas, monospace;
+	background: var(--surface-2);
+	padding: 1px 4px;
+	border-radius: 3px;
+	font-size: 0.9em;
+}

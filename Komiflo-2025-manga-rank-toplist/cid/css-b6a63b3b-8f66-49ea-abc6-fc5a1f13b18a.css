@@ -1,0 +1,283 @@
+@charset "utf-8";
+
+.v-application a { color: rgb(140, 158, 255); }
+
+.v-application .primary { background-color: rgb(63, 81, 181) !important; border-color: rgb(63, 81, 181) !important; }
+
+.v-application .primary--text { color: rgb(63, 81, 181) !important; caret-color: rgb(63, 81, 181) !important; }
+
+.v-application .primary.lighten-5 { background-color: rgb(210, 210, 255) !important; border-color: rgb(210, 210, 255) !important; }
+
+.v-application .primary--text.text--lighten-5 { color: rgb(210, 210, 255) !important; caret-color: rgb(210, 210, 255) !important; }
+
+.v-application .primary.lighten-4 { background-color: rgb(181, 183, 255) !important; border-color: rgb(181, 183, 255) !important; }
+
+.v-application .primary--text.text--lighten-4 { color: rgb(181, 183, 255) !important; caret-color: rgb(181, 183, 255) !important; }
+
+.v-application .primary.lighten-3 { background-color: rgb(152, 156, 255) !important; border-color: rgb(152, 156, 255) !important; }
+
+.v-application .primary--text.text--lighten-3 { color: rgb(152, 156, 255) !important; caret-color: rgb(152, 156, 255) !important; }
+
+.v-application .primary.lighten-2 { background-color: rgb(123, 130, 238) !important; border-color: rgb(123, 130, 238) !important; }
+
+.v-application .primary--text.text--lighten-2 { color: rgb(123, 130, 238) !important; caret-color: rgb(123, 130, 238) !important; }
+
+.v-application .primary.lighten-1 { background-color: rgb(94, 105, 209) !important; border-color: rgb(94, 105, 209) !important; }
+
+.v-application .primary--text.text--lighten-1 { color: rgb(94, 105, 209) !important; caret-color: rgb(94, 105, 209) !important; }
+
+.v-application .primary.darken-1 { background-color: rgb(25, 58, 154) !important; border-color: rgb(25, 58, 154) !important; }
+
+.v-application .primary--text.text--darken-1 { color: rgb(25, 58, 154) !important; caret-color: rgb(25, 58, 154) !important; }
+
+.v-application .primary.darken-2 { background-color: rgb(0, 37, 127) !important; border-color: rgb(0, 37, 127) !important; }
+
+.v-application .primary--text.text--darken-2 { color: rgb(0, 37, 127) !important; caret-color: rgb(0, 37, 127) !important; }
+
+.v-application .primary.darken-3 { background-color: rgb(0, 18, 101) !important; border-color: rgb(0, 18, 101) !important; }
+
+.v-application .primary--text.text--darken-3 { color: rgb(0, 18, 101) !important; caret-color: rgb(0, 18, 101) !important; }
+
+.v-application .primary.darken-4 { background-color: rgb(0, 0, 77) !important; border-color: rgb(0, 0, 77) !important; }
+
+.v-application .primary--text.text--darken-4 { color: rgb(0, 0, 77) !important; caret-color: rgb(0, 0, 77) !important; }
+
+.v-application .secondary { background-color: rgb(176, 190, 197) !important; border-color: rgb(176, 190, 197) !important; }
+
+.v-application .secondary--text { color: rgb(176, 190, 197) !important; caret-color: rgb(176, 190, 197) !important; }
+
+.v-application .secondary.lighten-5 { background-color: rgb(255, 255, 255) !important; border-color: rgb(255, 255, 255) !important; }
+
+.v-application .secondary--text.text--lighten-5 { color: rgb(255, 255, 255) !important; caret-color: rgb(255, 255, 255) !important; }
+
+.v-application .secondary.lighten-4 { background-color: rgb(255, 255, 255) !important; border-color: rgb(255, 255, 255) !important; }
+
+.v-application .secondary--text.text--lighten-4 { color: rgb(255, 255, 255) !important; caret-color: rgb(255, 255, 255) !important; }
+
+.v-application .secondary.lighten-3 { background-color: rgb(255, 255, 255) !important; border-color: rgb(255, 255, 255) !important; }
+
+.v-application .secondary--text.text--lighten-3 { color: rgb(255, 255, 255) !important; caret-color: rgb(255, 255, 255) !important; }
+
+.v-application .secondary.lighten-2 { background-color: rgb(232, 246, 254) !important; border-color: rgb(232, 246, 254) !important; }
+
+.v-application .secondary--text.text--lighten-2 { color: rgb(232, 246, 254) !important; caret-color: rgb(232, 246, 254) !important; }
+
+.v-application .secondary.lighten-1 { background-color: rgb(203, 218, 225) !important; border-color: rgb(203, 218, 225) !important; }
+
+.v-application .secondary--text.text--lighten-1 { color: rgb(203, 218, 225) !important; caret-color: rgb(203, 218, 225) !important; }
+
+.v-application .secondary.darken-1 { background-color: rgb(149, 163, 170) !important; border-color: rgb(149, 163, 170) !important; }
+
+.v-application .secondary--text.text--darken-1 { color: rgb(149, 163, 170) !important; caret-color: rgb(149, 163, 170) !important; }
+
+.v-application .secondary.darken-2 { background-color: rgb(123, 137, 143) !important; border-color: rgb(123, 137, 143) !important; }
+
+.v-application .secondary--text.text--darken-2 { color: rgb(123, 137, 143) !important; caret-color: rgb(123, 137, 143) !important; }
+
+.v-application .secondary.darken-3 { background-color: rgb(98, 111, 118) !important; border-color: rgb(98, 111, 118) !important; }
+
+.v-application .secondary--text.text--darken-3 { color: rgb(98, 111, 118) !important; caret-color: rgb(98, 111, 118) !important; }
+
+.v-application .secondary.darken-4 { background-color: rgb(74, 87, 93) !important; border-color: rgb(74, 87, 93) !important; }
+
+.v-application .secondary--text.text--darken-4 { color: rgb(74, 87, 93) !important; caret-color: rgb(74, 87, 93) !important; }
+
+.v-application .accent { background-color: rgb(130, 177, 255) !important; border-color: rgb(130, 177, 255) !important; }
+
+.v-application .accent--text { color: rgb(130, 177, 255) !important; caret-color: rgb(130, 177, 255) !important; }
+
+.v-application .accent.lighten-5 { background-color: rgb(255, 255, 255) !important; border-color: rgb(255, 255, 255) !important; }
+
+.v-application .accent--text.text--lighten-5 { color: rgb(255, 255, 255) !important; caret-color: rgb(255, 255, 255) !important; }
+
+.v-application .accent.lighten-4 { background-color: rgb(248, 255, 255) !important; border-color: rgb(248, 255, 255) !important; }
+
+.v-application .accent--text.text--lighten-4 { color: rgb(248, 255, 255) !important; caret-color: rgb(248, 255, 255) !important; }
+
+.v-application .accent.lighten-3 { background-color: rgb(218, 255, 255) !important; border-color: rgb(218, 255, 255) !important; }
+
+.v-application .accent--text.text--lighten-3 { color: rgb(218, 255, 255) !important; caret-color: rgb(218, 255, 255) !important; }
+
+.v-application .accent.lighten-2 { background-color: rgb(188, 232, 255) !important; border-color: rgb(188, 232, 255) !important; }
+
+.v-application .accent--text.text--lighten-2 { color: rgb(188, 232, 255) !important; caret-color: rgb(188, 232, 255) !important; }
+
+.v-application .accent.lighten-1 { background-color: rgb(159, 204, 255) !important; border-color: rgb(159, 204, 255) !important; }
+
+.v-application .accent--text.text--lighten-1 { color: rgb(159, 204, 255) !important; caret-color: rgb(159, 204, 255) !important; }
+
+.v-application .accent.darken-1 { background-color: rgb(101, 150, 226) !important; border-color: rgb(101, 150, 226) !important; }
+
+.v-application .accent--text.text--darken-1 { color: rgb(101, 150, 226) !important; caret-color: rgb(101, 150, 226) !important; }
+
+.v-application .accent.darken-2 { background-color: rgb(70, 125, 198) !important; border-color: rgb(70, 125, 198) !important; }
+
+.v-application .accent--text.text--darken-2 { color: rgb(70, 125, 198) !important; caret-color: rgb(70, 125, 198) !important; }
+
+.v-application .accent.darken-3 { background-color: rgb(35, 100, 170) !important; border-color: rgb(35, 100, 170) !important; }
+
+.v-application .accent--text.text--darken-3 { color: rgb(35, 100, 170) !important; caret-color: rgb(35, 100, 170) !important; }
+
+.v-application .accent.darken-4 { background-color: rgb(0, 76, 144) !important; border-color: rgb(0, 76, 144) !important; }
+
+.v-application .accent--text.text--darken-4 { color: rgb(0, 76, 144) !important; caret-color: rgb(0, 76, 144) !important; }
+
+.v-application .error { background-color: rgb(255, 82, 82) !important; border-color: rgb(255, 82, 82) !important; }
+
+.v-application .error--text { color: rgb(255, 82, 82) !important; caret-color: rgb(255, 82, 82) !important; }
+
+.v-application .error.lighten-5 { background-color: rgb(255, 228, 213) !important; border-color: rgb(255, 228, 213) !important; }
+
+.v-application .error--text.text--lighten-5 { color: rgb(255, 228, 213) !important; caret-color: rgb(255, 228, 213) !important; }
+
+.v-application .error.lighten-4 { background-color: rgb(255, 198, 185) !important; border-color: rgb(255, 198, 185) !important; }
+
+.v-application .error--text.text--lighten-4 { color: rgb(255, 198, 185) !important; caret-color: rgb(255, 198, 185) !important; }
+
+.v-application .error.lighten-3 { background-color: rgb(255, 169, 158) !important; border-color: rgb(255, 169, 158) !important; }
+
+.v-application .error--text.text--lighten-3 { color: rgb(255, 169, 158) !important; caret-color: rgb(255, 169, 158) !important; }
+
+.v-application .error.lighten-2 { background-color: rgb(255, 140, 132) !important; border-color: rgb(255, 140, 132) !important; }
+
+.v-application .error--text.text--lighten-2 { color: rgb(255, 140, 132) !important; caret-color: rgb(255, 140, 132) !important; }
+
+.v-application .error.lighten-1 { background-color: rgb(255, 111, 106) !important; border-color: rgb(255, 111, 106) !important; }
+
+.v-application .error--text.text--lighten-1 { color: rgb(255, 111, 106) !important; caret-color: rgb(255, 111, 106) !important; }
+
+.v-application .error.darken-1 { background-color: rgb(223, 50, 59) !important; border-color: rgb(223, 50, 59) !important; }
+
+.v-application .error--text.text--darken-1 { color: rgb(223, 50, 59) !important; caret-color: rgb(223, 50, 59) !important; }
+
+.v-application .error.darken-2 { background-color: rgb(191, 0, 37) !important; border-color: rgb(191, 0, 37) !important; }
+
+.v-application .error--text.text--darken-2 { color: rgb(191, 0, 37) !important; caret-color: rgb(191, 0, 37) !important; }
+
+.v-application .error.darken-3 { background-color: rgb(159, 0, 16) !important; border-color: rgb(159, 0, 16) !important; }
+
+.v-application .error--text.text--darken-3 { color: rgb(159, 0, 16) !important; caret-color: rgb(159, 0, 16) !important; }
+
+.v-application .error.darken-4 { background-color: rgb(128, 0, 0) !important; border-color: rgb(128, 0, 0) !important; }
+
+.v-application .error--text.text--darken-4 { color: rgb(128, 0, 0) !important; caret-color: rgb(128, 0, 0) !important; }
+
+.v-application .info { background-color: rgb(33, 150, 243) !important; border-color: rgb(33, 150, 243) !important; }
+
+.v-application .info--text { color: rgb(33, 150, 243) !important; caret-color: rgb(33, 150, 243) !important; }
+
+.v-application .info.lighten-5 { background-color: rgb(212, 255, 255) !important; border-color: rgb(212, 255, 255) !important; }
+
+.v-application .info--text.text--lighten-5 { color: rgb(212, 255, 255) !important; caret-color: rgb(212, 255, 255) !important; }
+
+.v-application .info.lighten-4 { background-color: rgb(181, 255, 255) !important; border-color: rgb(181, 255, 255) !important; }
+
+.v-application .info--text.text--lighten-4 { color: rgb(181, 255, 255) !important; caret-color: rgb(181, 255, 255) !important; }
+
+.v-application .info.lighten-3 { background-color: rgb(149, 232, 255) !important; border-color: rgb(149, 232, 255) !important; }
+
+.v-application .info--text.text--lighten-3 { color: rgb(149, 232, 255) !important; caret-color: rgb(149, 232, 255) !important; }
+
+.v-application .info.lighten-2 { background-color: rgb(117, 204, 255) !important; border-color: rgb(117, 204, 255) !important; }
+
+.v-application .info--text.text--lighten-2 { color: rgb(117, 204, 255) !important; caret-color: rgb(117, 204, 255) !important; }
+
+.v-application .info.lighten-1 { background-color: rgb(81, 176, 255) !important; border-color: rgb(81, 176, 255) !important; }
+
+.v-application .info--text.text--lighten-1 { color: rgb(81, 176, 255) !important; caret-color: rgb(81, 176, 255) !important; }
+
+.v-application .info.darken-1 { background-color: rgb(0, 124, 214) !important; border-color: rgb(0, 124, 214) !important; }
+
+.v-application .info--text.text--darken-1 { color: rgb(0, 124, 214) !important; caret-color: rgb(0, 124, 214) !important; }
+
+.v-application .info.darken-2 { background-color: rgb(0, 100, 186) !important; border-color: rgb(0, 100, 186) !important; }
+
+.v-application .info--text.text--darken-2 { color: rgb(0, 100, 186) !important; caret-color: rgb(0, 100, 186) !important; }
+
+.v-application .info.darken-3 { background-color: rgb(0, 77, 159) !important; border-color: rgb(0, 77, 159) !important; }
+
+.v-application .info--text.text--darken-3 { color: rgb(0, 77, 159) !important; caret-color: rgb(0, 77, 159) !important; }
+
+.v-application .info.darken-4 { background-color: rgb(0, 55, 132) !important; border-color: rgb(0, 55, 132) !important; }
+
+.v-application .info--text.text--darken-4 { color: rgb(0, 55, 132) !important; caret-color: rgb(0, 55, 132) !important; }
+
+.v-application .success { background-color: rgb(76, 175, 80) !important; border-color: rgb(76, 175, 80) !important; }
+
+.v-application .success--text { color: rgb(76, 175, 80) !important; caret-color: rgb(76, 175, 80) !important; }
+
+.v-application .success.lighten-5 { background-color: rgb(220, 255, 214) !important; border-color: rgb(220, 255, 214) !important; }
+
+.v-application .success--text.text--lighten-5 { color: rgb(220, 255, 214) !important; caret-color: rgb(220, 255, 214) !important; }
+
+.v-application .success.lighten-4 { background-color: rgb(190, 255, 186) !important; border-color: rgb(190, 255, 186) !important; }
+
+.v-application .success--text.text--lighten-4 { color: rgb(190, 255, 186) !important; caret-color: rgb(190, 255, 186) !important; }
+
+.v-application .success.lighten-3 { background-color: rgb(162, 255, 158) !important; border-color: rgb(162, 255, 158) !important; }
+
+.v-application .success--text.text--lighten-3 { color: rgb(162, 255, 158) !important; caret-color: rgb(162, 255, 158) !important; }
+
+.v-application .success.lighten-2 { background-color: rgb(133, 231, 131) !important; border-color: rgb(133, 231, 131) !important; }
+
+.v-application .success--text.text--lighten-2 { color: rgb(133, 231, 131) !important; caret-color: rgb(133, 231, 131) !important; }
+
+.v-application .success.lighten-1 { background-color: rgb(105, 203, 105) !important; border-color: rgb(105, 203, 105) !important; }
+
+.v-application .success--text.text--lighten-1 { color: rgb(105, 203, 105) !important; caret-color: rgb(105, 203, 105) !important; }
+
+.v-application .success.darken-1 { background-color: rgb(45, 148, 55) !important; border-color: rgb(45, 148, 55) !important; }
+
+.v-application .success--text.text--darken-1 { color: rgb(45, 148, 55) !important; caret-color: rgb(45, 148, 55) !important; }
+
+.v-application .success.darken-2 { background-color: rgb(0, 121, 30) !important; border-color: rgb(0, 121, 30) !important; }
+
+.v-application .success--text.text--darken-2 { color: rgb(0, 121, 30) !important; caret-color: rgb(0, 121, 30) !important; }
+
+.v-application .success.darken-3 { background-color: rgb(0, 96, 0) !important; border-color: rgb(0, 96, 0) !important; }
+
+.v-application .success--text.text--darken-3 { color: rgb(0, 96, 0) !important; caret-color: rgb(0, 96, 0) !important; }
+
+.v-application .success.darken-4 { background-color: rgb(0, 71, 0) !important; border-color: rgb(0, 71, 0) !important; }
+
+.v-application .success--text.text--darken-4 { color: rgb(0, 71, 0) !important; caret-color: rgb(0, 71, 0) !important; }
+
+.v-application .warning { background-color: rgb(251, 140, 0) !important; border-color: rgb(251, 140, 0) !important; }
+
+.v-application .warning--text { color: rgb(251, 140, 0) !important; caret-color: rgb(251, 140, 0) !important; }
+
+.v-application .warning.lighten-5 { background-color: rgb(255, 255, 158) !important; border-color: rgb(255, 255, 158) !important; }
+
+.v-application .warning--text.text--lighten-5 { color: rgb(255, 255, 158) !important; caret-color: rgb(255, 255, 158) !important; }
+
+.v-application .warning.lighten-4 { background-color: rgb(255, 251, 130) !important; border-color: rgb(255, 251, 130) !important; }
+
+.v-application .warning--text.text--lighten-4 { color: rgb(255, 251, 130) !important; caret-color: rgb(255, 251, 130) !important; }
+
+.v-application .warning.lighten-3 { background-color: rgb(255, 223, 103) !important; border-color: rgb(255, 223, 103) !important; }
+
+.v-application .warning--text.text--lighten-3 { color: rgb(255, 223, 103) !important; caret-color: rgb(255, 223, 103) !important; }
+
+.v-application .warning.lighten-2 { background-color: rgb(255, 194, 75) !important; border-color: rgb(255, 194, 75) !important; }
+
+.v-application .warning--text.text--lighten-2 { color: rgb(255, 194, 75) !important; caret-color: rgb(255, 194, 75) !important; }
+
+.v-application .warning.lighten-1 { background-color: rgb(255, 167, 45) !important; border-color: rgb(255, 167, 45) !important; }
+
+.v-application .warning--text.text--lighten-1 { color: rgb(255, 167, 45) !important; caret-color: rgb(255, 167, 45) !important; }
+
+.v-application .warning.darken-1 { background-color: rgb(219, 114, 0) !important; border-color: rgb(219, 114, 0) !important; }
+
+.v-application .warning--text.text--darken-1 { color: rgb(219, 114, 0) !important; caret-color: rgb(219, 114, 0) !important; }
+
+.v-application .warning.darken-2 { background-color: rgb(187, 89, 0) !important; border-color: rgb(187, 89, 0) !important; }
+
+.v-application .warning--text.text--darken-2 { color: rgb(187, 89, 0) !important; caret-color: rgb(187, 89, 0) !important; }
+
+.v-application .warning.darken-3 { background-color: rgb(157, 64, 0) !important; border-color: rgb(157, 64, 0) !important; }
+
+.v-application .warning--text.text--darken-3 { color: rgb(157, 64, 0) !important; caret-color: rgb(157, 64, 0) !important; }
+
+.v-application .warning.darken-4 { background-color: rgb(128, 39, 0) !important; border-color: rgb(128, 39, 0) !important; }
+
+.v-application .warning--text.text--darken-4 { color: rgb(128, 39, 0) !important; caret-color: rgb(128, 39, 0) !important; }

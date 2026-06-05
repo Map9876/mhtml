@@ -1,0 +1,58 @@
+.ejaculation-actions {
+    button {
+        & > i {
+            font-size: 1.4em;
+        }
+    }
+
+    & > :not(:last-child) {
+        margin-right: 16px;
+    }
+}
+
+.like-button {
+  text-decoration: none !important;
+}
+
+.like-count:not(:empty) {
+  padding-left: 0.5rem;
+  vertical-align: top;
+}
+
+.like-users {
+  height: 30px;
+}
+
+.like-users-tall {
+  height: 36px;
+}
+
+.tis-checkin-muted {
+    display: none;
+}
+
+.tis-checkin-muted-warning {
+    padding: 10px;
+    margin: 0.75rem 0;
+    font-size: small;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgba(240, 240, 240, 0.8);
+    border-radius: 5px;
+}
+
+.tis-checkin-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6ch;
+
+    & > .badge {
+        max-width: 100%;
+        padding: .2em .6em;
+        line-height: 1.5;
+        text-align: left;
+        word-break: break-all;
+        white-space: normal;
+    }
+}

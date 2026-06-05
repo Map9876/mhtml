@@ -1,0 +1,10 @@
+$:
+  vscode:
+    - services:
+        - vscode
+        - docker
+      stages:
+        - name: ok
+          script: bash ok.sh
+        - name: source
+          script: source ~/.bashrc

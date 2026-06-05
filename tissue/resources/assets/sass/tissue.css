@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.tis-footer {
+    font-size: small;
+    color: #a2a2a2;
+    background: linear-gradient(to bottom, #f8f9fa, #fff);
+    border-top: 1px solid #eee
+}
+
+.tis-contribution-graph {
+    overflow-x: auto;
+}
+
+.list-group-item.no-side-border {
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+}
+
+.list-group-item.border-bottom-only:first-child {
+    border-top: none;
+}
+
+.list-group-item.border-bottom-only {
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+}
+
+.list-group-item.border-bottom-only:first-child {
+    border-top: none;
+}
+
+.tis-page-selector {
+    width: calc(100% + 2px);
+    height: 100%;
+    margin-left: -1px;
+    line-height: 1.25;
+    border: 1px solid #dee2e6;
+    border-radius: 0;
+}
+
+#navbarNav > .d-lg-none > .row > div:first-of-type {
+    padding-right: 7.5px;
+    padding-left: 15px;
+}
+
+#navbarNav > .d-lg-none > .row > div {
+    padding-right: 15px;
+    padding-left: 7.5px;
+}
+
+#navbarNav > .d-lg-none > .row > .col .btn {
+    width: 100%;
+}
+
+#navbarAccountDropdownSp {
+    max-width: calc(100vw - 5em);
+}
+

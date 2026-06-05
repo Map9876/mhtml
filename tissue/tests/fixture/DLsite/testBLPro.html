@@ -1,0 +1,2505 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+
+<head>
+  <meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-26fb73475871c01d5bd",applicationID:"781370968"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1211.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=1024">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="google-site-verification" content="S2Jzwn_Dm4hGoyTfPnxEUSKnbHSuT73N6SZbTanWbEM">
+<link rel="apple-touch-icon" href="/modpub/images/web/common/apple_touch_icon_girls_57x57.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/modpub/images/web/common/apple_touch_icon_girls_72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/modpub/images/web/common/apple_touch_icon_girls_76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/modpub/images/web/common/apple_touch_icon_girls_114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/modpub/images/web/common/apple_touch_icon_girls_120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/modpub/images/web/common/apple_touch_icon_girls_144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/modpub/images/web/common/apple_touch_icon_girls_152x152.png">
+<meta name="msapplication-config" content="/browserconfig_girls.xml">
+<link rel="shortcut icon" href="/images/web/common/favicon.ico">
+
+<script src="https://cdn-apac.onetrust.com/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="b3436a95-43c8-4563-b55a-f5f020bd3cc8"></script>
+
+<script type="text/javascript">
+  function OptanonWrapper() { }
+</script>
+
+
+  
+      
+  
+  
+  <link rel="canonical" href="https://www.dlsite.com/bl-pro/work/=/product_id/BJ222351.html">
+
+  <link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.dlsite.com/bl-pro-touch/work/=/product_id/BJ222351.html" class="alternate_smartphone" />
+
+  <link rel="alternate" hreflang="ja" href="https://www.dlsite.com/bl-pro/work/=/product_id/BJ222351.html">
+<link rel="alternate" hreflang="zh-TW" href="https://www.dlsite.com/bl-pro/work/=/product_id/BJ222351.html/?locale=zh_TW">
+<link rel="alternate" hreflang="zh-CN" href="https://www.dlsite.com/bl-pro/work/=/product_id/BJ222351.html/?locale=zh_CN">
+<link rel="alternate" hreflang="ko" href="https://www.dlsite.com/bl-pro/work/=/product_id/BJ222351.html/?locale=ko_KR">
+<link rel="alternate" hreflang="en" href="https://www.dlsite.com/bl-pro/work/=/product_id/BJ222351.html/?locale=en_US">
+
+
+
+<meta name="description" content="先生+ヤンキー×優等生「DLsite がるまに」はBLコミック・ボーイズラブのダウンロードショップ。お気に入りの作品をすぐダウンロードできてすぐ楽しめる！毎日更新しているのであなたが探している作品にきっと出会えます。国内最大級の二次元総合ダウンロードショップ「DLsite」！">
+<title>コミックマズル　クズの教育 [Reader Store / コミックマズル] | DLsite がるまに</title>
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@DLsiteがるまに">
+<meta name="twitter:image:src" content="https://img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_main.jpg">
+
+<meta property="og:title" content="コミックマズル　クズの教育 [藤村まりな] | DLsiteがるまに">
+<meta property="og:type" content="website">
+<meta property="og:description" content="先生+ヤンキー×優等生「DLsite がるまに」はBLコミック・ボーイズラブのダウンロードショップ。お気に入りの作品をすぐダウンロードできてすぐ楽しめる！毎日更新しているのであなたが探している作品にきっと出会えます。国内最大級の二次元総合ダウンロードショップ「DLsite」！">
+<meta property="og:url" content="https://www.dlsite.com/bl-pro/work/=/product_id/BJ222351.html">
+<meta property="og:image" content="https://img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_main.jpg">
+<meta property="og:site_name" content="">
+<meta property="fb:app_id" content="226115600829997">
+<meta property="mixi:device-smartphone" content="https://www.dlsite.com/blpro-touch/work/=/product_id/BJ222351.html">
+
+
+    <script>
+if ( ! /uniqid=/.test(document.cookie)) {
+  document.cookie = 'uniqid=' + Math.random().toString(36) + '; domain=.dlsite.com; path=/; max-age=63072000'
+}
+
+if (/uniqid=\./.test(document.cookie)) {
+  document.cookie = 'uniqid=' + Math.random().toString(36) + '; domain=.dlsite.com; path=/; max-age=63072000'
+}
+</script>
+
+  <link rel="stylesheet" href="/css/reset.css?1631666836" type="text/css" id="reset" />
+<link rel="stylesheet" href="/css/default.css?1631667861" type="text/css" id="default" />
+<link rel="stylesheet" href="/css/layout_2col_work.css?1631666836" type="text/css" id="layout_2col_work" />
+<link rel="stylesheet" href="/css/common_girls.css?1636091283" type="text/css" id="common" />
+<link rel="stylesheet" href="/css/switch_girls.css?1631666836" type="text/css" id="switch" />
+<link rel="stylesheet" href="/css/suggest.css?1631666836" type="text/css" id="suggest" />
+<link rel="stylesheet" href="/css/header_campaign_banner.css?1631667861" type="text/css" id="header_campaign_banner" />
+<link rel="stylesheet" href="/modpub/universal/css/universal.css?" type="text/css" id="universal" />
+<link rel="stylesheet" href="/css/work_template_girls.css?1634622923" type="text/css" id="work_template" />
+<link rel="stylesheet" href="/css/work_slider.css?1631667861" type="text/css" id="work_slider" />
+<link rel="stylesheet" href="/css/couponget.css?1631667861" type="text/css" id="couponget" />
+
+  <script type="text/javascript" src="/js/libs/libraries-pack.js?1635738397"></script>
+<script type="text/javascript" src="/js/dlsite_util.js?1627347590"></script>
+<script type="text/javascript" src="/js/slide_menu.js?1553754105"></script>
+<script type="text/javascript" src="/js/dlsite_suggest.js?1617866986"></script>
+<script type="text/javascript" src="/js/dlsite_trigger.js?1553754105"></script>
+<script type="text/javascript" src="/js/jquery.slideproduct.js?1610442922"></script>
+<script type="text/javascript" src="/js/dlsite_img_filter.js?1635137983"></script>
+<script type="text/javascript" src="/js/dlsite/work/work_logger.js?1617856051"></script>
+<script type="text/javascript" src="/js/libs/clipboard.min.js?1562550059"></script>
+<script type="text/javascript" src="/js/swiper4.0.7/js/swiper.min.js?1553754105"></script>
+<script type="text/javascript" src="/js/picturefill.min.js?1626658133"></script>
+
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'}); var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=Z_ubU9a2b3yGEFSh9Hdtkg&gtm_preview=env-12&gtm_cookies_win=x';f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NTSRG2');</script>
+<!-- End Google Tag Manager -->
+
+
+
+  
+
+
+</head>
+
+<body class="style_blpro t_female">
+  
+  
+<script>
+(function(){
+$.extend({
+  useAdultcheck: false,
+  importAdultcheck: function(){
+    if ($.useAdultcheck) return;
+    $.useAdultcheck = true;
+    var s = document.createElement('script');
+    s.src = '/js/adultcheck.js?1635137983';
+    s.defer = true;
+    document.querySelector('head').appendChild(s);
+  }
+});
+if ((dlsite.isAdult() && dlsite.getId() !== 'circle' && !(dlsite.isFemale() && dlsite.isBooks())) || dlsite.forceAdultCheck) {
+  $.importAdultcheck();
+}
+})();
+</script>
+
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTSRG2&gtm_auth=Z_ubU9a2b3yGEFSh9Hdtkg&gtm_preview=env-12&gtm_cookies_win=x" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+    <div data-vue-component="header-banner" data-vue-async="true" data-section_name="campaign_header_banner">
+    <div v-if="loading" class="hd_cp_banner type_3bn">
+    <ul class="cp_bn_list">
+            <li class="cp_bn_item" style="background-color: #ce232b;">
+        <a href="https://www.dlsite.com/home/campaign/founding-festival" >
+          <div class="cp_bn_inner">
+            <div class="cp_bn_reminder blank" style="background-color: ; color: ;">
+              <div class="cp_bn_reminder_content"></div>
+            </div>
+            <div class="cp_bn"><img src="/modpub/images/campaign/founding_festival_25th/bn_hd_cp.jpg" alt=""></div>
+                      </div>
+        </a>
+      </li>
+            <li class="cp_bn_item" style="background-color: #ffffff;">
+        <a href="https://www.dlsite.com/bl-pro/work/=/product_id/RJ342050.html" >
+          <div class="cp_bn_inner">
+            <div class="cp_bn_reminder blank" style="background-color: ; color: ;">
+              <div class="cp_bn_reminder_content"></div>
+            </div>
+            <div class="cp_bn"><img src="/modpub/images/banner/floor_header/girls_2108/bn_210810_bibicolle_lang_all.png" alt=""></div>
+                      </div>
+        </a>
+      </li>
+            <li class="cp_bn_item" style="background-color: #837d9a;">
+        <a href="https://www.dlsite.com/bl-pro/work/=/product_id/RJ327450.html" >
+          <div class="cp_bn_inner">
+            <div class="cp_bn_reminder blank" style="background-color: ; color: ;">
+              <div class="cp_bn_reminder_content"></div>
+            </div>
+            <div class="cp_bn"><img src="/modpub/images/banner/floor_header/bl_2104/bn_210409_rymanlovehodanshikai.png" alt=""></div>
+                      </div>
+        </a>
+      </li>
+          </ul>
+  </div>
+    
+  <div v-else-if="is_show_frame" :class="style" class="hd_cp_banner" v-cloak>
+    <ul class="cp_bn_list">
+      <li v-for="campaign in campaigns" class="cp_bn_item" :data-ab-test="campaign.abTest" :style="{'background-color': campaign.mainColor}">
+        <a :href="campaign.url" :target="campaign.option.includes('target_blank') ? 'blank' : null">
+          <div class="cp_bn_inner">
+            <div class="cp_bn_reminder" v-if="campaign.isShowLimit" :class="{blank: !campaign.isShowLimit}" :style="{'background-color': campaign.periodBgColor, 'color': campaign.periodTextColor}">
+              <div class="cp_bn_reminder_content" v-html="campaign.period"></div>
+            </div>
+            <div class="cp_bn"><img :src="campaign.img" :alt="campaign.alt"></div>
+            <div
+              class="cp_bn_work"
+              v-if="campaign.outline"
+              v-html="campaign.outline"
+              :style="{'background-color': campaign.periodBgColor}"
+            >
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+</div>
+
+  <div data-vue-component="coupon-modal" v-cloak></div>
+
+<div data-vue-component="header-locale-suggest-dialog" data-vue-async="true"></div>
+
+<div data-vue-component="ie-alert" v-cloak></div>
+  <!-- container -->
+    <div itemscope itemtype="http://schema.org/Product" id="container" site="blpro">
+    
+      <div id="top_header">
+        
+      </div>
+
+      <!-- header -->
+      <div id="header">
+        <header class="l-header" data-vue-component="header" data-search-category="blpro">
+  <div class="headerCore">
+    <div class="headerCore_top">
+      <div class="headerCore_top_item">
+        <p class="header_description">
+                                    ボーイズラブ(BL)同人・漫画・ゲーム・ボイスならDLsiteがるまに                              </p>
+      </div>
+      <div class="headerCore_top_item">
+                <ul v-if="isMemberLogin" v-cloak class="login_information">
+          <li class="login_information_item type_point">
+            <a href="https://www.dlsite.com/bl-pro/mypage/point" class="coupon_text">
+            ポイント<span class="number" v-text="point_str">-</span>pt
+            </a>
+          </li>
+          <li class="login_information_item type_coupon" :class="{ 'is-active': noticeCoupons.length, 'singular-number': coupons.length === 1 }">
+            <a href="https://www.dlsite.com/bl-pro/mypage/coupon/list" class="coupon_text">クーポン<span class="number" v-text="coupons.length">-</span>枚</a>
+          </li>
+        </ul>
+                <header_locale class="header_dropdown_nav type_language">
+          <div class="header_dropdown_nav_Link">Language</div>
+        </header_locale>
+                        <header_service class="header_dropdown_nav type_service">
+          <div class="header_dropdown_nav_Link">関連サービス</div>
+        </header_service>
+              </div>
+    </div>
+
+    <div class="headerCore-sub">
+            <a href="https://www.dlsite.com/bl-pro/" class="logo">
+                        <img src="/images/web/common/logo/pc/logo-dlsite-girls.png" alt="DLsiteがるまに 女性向け" width="241" height="25">
+                      </a>
+            <!-- 検索 -->
+              <div class="globalSearch" :class="{active: isFocus}">
+          <form class="globalSearch-form" action="https://www.dlsite.com/bl-pro/fs" method="post">
+            <input name="_qf__fulltext_search" type="hidden" value="">
+            <input name="_layout" type="hidden" value="fs">
+            <input name="_site" type="hidden" value="blpro">
+            <input name="_form_id" type="hidden" value="FulltextSearchProductForm">
+            <input name="_view" type="hidden" value="input">
+            <input name="from" type="hidden" value="fs.header" id="header_search_from">
+
+                                        <input type="hidden" name="site_category" :value="selected" v-if="!/drama$/.test(selected)">
+                            <input type="hidden" name="work_category" :value="'drama'" v-if="/drama$/.test(selected)">
+                            <input type="hidden" name="work_category" :value="'all'" v-if="site.gender === 'female' && !selected">
+                            <input type="hidden" name="is_tl"  :value="1" v-if="/^girls/.test(selected)">
+              <input type="hidden" name="is_bl"  :value="1" v-if="/^bl/.test(selected)">
+              <input type="hidden" name="is_gay" :value="1" v-if="/^bl/.test(selected)">
+            
+            <div class="globalSearchSelect">
+              <div class="globalSearchSelect-lable">
+                <span v-text="searchCategories[selected]">すべて</span>
+              </div>
+              <select v-model="selected" class="globalSearchSelect-list is-active">
+                <option value="">すべて</option>
+                                <option value="girls">乙女向け同人</option>
+                <option value="girlspro">TLコミック</option>
+                <option value="girlsdrama">乙女向けドラマCD</option>
+                <option value="bl">BL同人</option>
+                <option value="blpro">BLコミック</option>
+                <option value="bldrama">BLドラマCD</option>
+                              </select>
+            </div>
+            <div class="globalSearchForm">
+              <input
+                name="keyword"
+                type="search"
+                id="search_text"
+                ref="keyword"
+                maxlength="255"
+                autocomplete="off"
+                aria-autocomplete="list"
+                                placeholder="キーワードから探す（作品名、サークル名など）"                @focus="isFocus = true"
+                @blur="isFocus = false"
+              >
+            </div>
+            <button id="search_button" class="globalSearchBtn" type="submit" @click="saveSelected()"><i>検索</i></button>
+          </form>
+        </div>
+        <div class="detailedSearch">
+          <a href="https://www.dlsite.com/bl-pro/fs">詳細検索</a>
+        </div>
+            <!-- /検索 -->
+      <!-- アイコンメニュー -->
+      <ul class="globalNav">
+        <li v-if="!isMemberLogin && !isCircleLogin" class="globalNav-item type-register" v-cloak>
+          <a href="https://www.dlsite.com/bl-pro/regist/user"><i>新規登録</i></a>
+        </li>
+        <li v-if="!isMemberLogin && !isCircleLogin" class="globalNav-item type-login" v-cloak>
+          <a href="https://www.dlsite.com/bl-pro/login/=/skip_register/1" referrerpolicy="no-referrer-when-downgrade"><i>ログイン</i></a>
+        </li>
+        <li v-if="isMemberLogin" class="globalNav-item type-favorite">
+          <a  :href="hasUnboughtFavorites ? 'https://www.dlsite.com/bl-pro/mypage/wishlist' : 'https://www.dlsite.com/bl-pro/mypage/wishlist'"><i>お気に入り</i></a><template v-if="hasUnboughtFavorites" v-cloak><a href="https://www.dlsite.com/bl-pro/mypage/wishlist/=/discount/1" class="notificationBadge" >割引作品あり</a></template>
+        </li>
+        <li class="globalNav-item type-cart"><a href="https://www.dlsite.com/bl-pro/cart"><i>カート</i></a><span v-if="cartActives.length" v-cloak class="cartBadge" v-text="Math.min(cartActives.length, 100)"></span></li>
+        <li v-if="isMemberLogin" class="globalNav-item type-play">
+          <a rel="noopener" href="https://play.dlsite.com/" target="_blank" v-cloak><i>購入済作品</i></a>
+        </li>
+        <!-- メンバーアカウント登録の場合　-->
+        <li v-if="isMemberLogin" class="globalNav-item type-circle">
+          <a v-cloak><i>アカウント</i></a>
+          <div class="dropdown_list type_account" v-cloak>
+            <div class="dropdown_list_inner">
+              <ul class="globalNav">
+                <li class="globalNav-item type-review">
+                  <a href="https://www.dlsite.com/bl-pro/mypage/short-review">
+                    <i>評価・レビュー</i>
+                  </a>
+                </li>
+                <li class="globalNav-item type-coupon">
+                  <a href="https://www.dlsite.com/bl-pro/mypage/coupon/list">
+                    <i>クーポン管理</i>
+                  </a>
+                </li>
+                <li class="globalNav-item type-userbuy">
+                  <a href="https://www.dlsite.com/bl-pro/mypage/userbuy">
+                    <i>購入履歴</i>
+                  </a>
+                </li>
+              </ul>
+              <ul class="menu_list">
+                <li class="menu_list_item type-mypage">
+                  <a href="https://www.dlsite.com/bl-pro/mypage" class="link">
+                    <i>マイページ</i>
+                    <span v-if="mypageNotices > 0" class="count" v-cloak>{{ noticesBadge(mypageNotices) }}</span>
+                  </a>
+                  <div v-if="mypageNotices > 0" class="notice">
+                                        重要なお知らせが<span>{{ mypageNotices }}件</span>あります。                  </div>
+                </li>
+                <li v-if="isCircleLogin" class="menu_list_item type-circle" v-cloak>
+                  <a href="https://www.dlsite.com/circle/" class="link">
+                    <i>サークル管理</i>
+                    <span v-if="circleNotices > 0" class="count" v-cloak>{{ noticesBadge(circleNotices) }}</span>
+                  </a>
+                  <div v-if="circleNotices > 0" class="notice">
+                                        重要なお知らせが<span>{{ circleNotices }}件</span>あります。                  </div>
+                </li>
+                <li class="menu_list_item">
+                  <a href="https://login.dlsite.com/user/self?lang=ja&redirect_uri=https%3A%2F%2Fwww.dlsite.com%2Fbl-pro%2F" class="link" target="_blank">
+                    <i>アカウント管理</i>
+                  </a>
+                </li>
+              </ul>
+              <div class="login_account">
+                <div class="login_account_item">
+                  <p v-if="login_id" v-cloak class="account_name">
+                                                            <span>{{ login_id.substr(0, 30) }}{{ login_id.length > 30 ? '...' : '' }}</span>
+                    さん                  </p>
+                </div>
+                <div class="login_account_item">
+                  <a href="https://www.dlsite.com/bl-pro/logout" class="logout">ログアウト</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span v-if="(mypageNotices + circleNotices) > 0 " class="accountBadge" v-text="noticesBadge(mypageNotices + circleNotices)" v-cloak></span>
+        </li>
+        <!-- サークルアカウントのみ登録の場合　-->
+        <li v-if="isCircleLogin && !isMemberLogin" class="globalNav-item type-circle">
+          <a v-cloak><i>アカウント</i></a>
+          <div class="dropdown_list type_account" v-cloak>
+            <div class="dropdown_list_inner">
+              <ul class="menu_list">
+                <li v-if="isCircleLogin" class="menu_list_item type-circle" v-cloak>
+                  <a href="https://www.dlsite.com/circle/" class="link">
+                    <i>サークル管理</i>
+                    <span v-if="circleNotices > 0" class="count" v-cloak>{{ noticesBadge(circleNotices) }}</span>
+                  </a>
+                  <div v-if="circleNotices > 0" class="notice">
+                                        重要なお知らせが<span>{{ circleNotices }}件</span>あります。                  </div>
+                </li>
+                <li class="menu_list_item">
+                  <a href="https://login.dlsite.com/user/self?lang=ja&redirect_uri=https%3A%2F%2Fwww.dlsite.com%2Fbl-pro%2F" class="link" target="_blank">
+                    <i>アカウント管理</i>
+                  </a>
+                </li>
+              </ul>
+              <div class="login_account">
+                <div class="login_account_item">
+                  <p v-if="login_id" v-cloak class="account_name">
+                                                            <span>{{ login_id.substr(0, 30) }}{{ login_id.length > 30 ? '...' : '' }}</span>
+                    さん                  </p>
+                </div>
+                <div class="login_account_item">
+                  <a href="https://www.dlsite.com/bl-pro/logout" class="logout">ログアウト</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span v-if="(circleNotices) > 0 " class="accountBadge" v-text="noticesBadge(circleNotices)" v-cloak></span>
+        </li>
+        <li class="globalNav-item type-guide">
+          <a href="#"><i>ガイド</i></a>
+          <div class="dropdown_list type_guide">
+            <div class="dropdown_list_inner">
+              <ul class="menu_list">
+                <li class="menu_list_item"><a rel="noopener" href="https://www.dlsite.com/bl-pro/faq/=/type/user" target="_blank" class="link">ヘルプ</a></li>
+                <li class="menu_list_item"><a href="https://www.dlsite.com/bl-pro/welcome" class="link">初めての方へ</a></li>
+                                <li class="menu_list_item"><a href="https://www.dlsite.com/bl-pro/circle/invite" class="link">サークル登録について</a></li>
+                                <li class="menu_list_item"><a href="https://www.dlsite.com/bl-pro/guide/payment" class="link">お支払方法について</a></li>
+                <li class="menu_list_item"><a href="https://www.dlsite.com/bl-pro/mypage/aboutpoint" class="link">ポイントについて</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <!-- /ガイドメニュー -->
+    </div>
+
+        <div class="headerCore-main">
+        <div class="headerCore-mainInner " :class="{ couponShow: isAccountLogin }">
+                  <ul class="floorTab type-girls">
+                                                                                            <li class="floorTab-item type-tl "><a href="https://www.dlsite.com/girls-pro/">乙女向け/TL</a></li>
+            <li class="floorTab-item type-bl is-active"><a href="https://www.dlsite.com/bl-pro/">BL</a></li>
+          </ul>
+        
+                <div class="floorNavLink type-girls">
+                    <div class="floorNavLink-item type-general"><a rel="noopener" href="https://www.dlsite.com/comic/" target="_blank">一般コミックへ</a></div>
+                    <div class="floorNavLink-item type-adult"><a href="https://www.dlsite.com/books/">男性 R18へ</a></div>
+        </div>
+              </div>
+
+            <div class="floorSubNav">
+        <div class="floorSubNav-item">
+          <ul class="headerNav">
+
+      
+                                                                                                                              <li class="headerNav-item"><a href="https://www.dlsite.com/bl/" class="doujin">同人</a></li>
+            <li class="headerNav-item"><a href="https://www.dlsite.com/bl-pro/" class="comic">コミック</a></li>
+            <li class="headerNav-item"><a href="https://www.dlsite.com/bl-drama/" class="drama">ドラマCD</a></li>
+            <li class="headerNav-item"><a href="https://www.dlsite.com/bl-pro/girlsgame" class="game">ゲーム</a></li>
+                        <li class="headerNav-item">
+              <a href="https://www.dlsite.com/bl-pro/ranking" class="ranking">ランキング</a>
+            </li>
+                        <li class="headerNav-item"><a href="https://www.dlsite.com/bl-pro/new" class="calendar">発売カレンダー</a></li>
+            
+            
+            
+                </ul>
+        </div>
+      </div>
+      
+    </div>
+      </div>
+</header>
+
+
+
+
+        <script type="text/javascript">
+var loginchecked = $.cookie('loginchecked');
+
+if (loginchecked & 1) {
+  // ユーザがログイン中の表示
+  $("li#nav_login a").attr("title", "ログアウト").attr("href", "https://www.dlsite.com/bl-pro/logout/=/type/member");
+  $("li#nav_login").attr("id", "nav_logout");
+} else {
+  // ユーザがログアウト中の表示
+//  $("li#nav_logout a").attr("title", "ログイン").attr("href", "https://www.dlsite.com/bl-pro/login/=/type/member");
+//  $("li#nav_logout").attr("id", "nav_login");
+}
+</script>
+
+        
+      </div>
+      <!-- /header -->
+
+            <!-- top_wrapper -->
+      <div id="top_wrapper" class="clearfix" data-section_name="top_wrapper">
+        <ul class="topicpath" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+  <li class="topicpath_item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+    <a itemtype="https://schema.org/Thing" itemprop="item" href="https://www.dlsite.com/bl-pro/">
+    <span itemprop="name">
+              BLコミック
+          </span>
+    </a>
+    <meta itemprop="position" content="1">
+      </li>
+                          <li class="topicpath_item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemtype="http://schema.org/Thing" itemprop="item" href="https://www.dlsite.com/bl-pro/circle/list">
+    <span itemprop="name">
+                                      出版社／著者一覧          </span>
+        </a>
+        <meta itemprop="position" content="2">
+              </li>
+                  <li class="topicpath_item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+        <a itemtype="https://schema.org/Thing" itemprop="item"
+           href="https://www.dlsite.com/bl-pro/circle/profile/=/maker_id/BG01505.html">
+          <span itemprop="name">Reader Store / コミックマズル</span>
+        </a>
+        <meta itemprop="position" content="3">
+              </li>
+                                                  <li class="topicpath_item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+            <a itemtype="https://schema.org/Thing" itemprop="item"
+               href="https://www.dlsite.com/bl-pro/fsr/=/keyword_maker_name/%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%83%9E%E3%82%BA%E3%83%AB+LBL01152/from/work.label">
+              <span itemprop="name">コミックマズル</span>
+            </a>
+            <meta itemprop="position" content="4">
+                      </li>
+                                  <li class="topicpath_item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                        <a itemtype="https://schema.org/Thing" itemprop="item"
+               href="https://www.dlsite.com/bl-pro/fsr/=/keyword_work_name/%22%E3%82%AF%E3%82%BA%E3%81%AE%E6%95%99%E8%82%B2%22+TITLE00055091/label_id/LBL01152/order/title_d/from/work.titles">
+                              <span itemprop="name">「クズの教育」シリーズ</span>
+              </a>
+              <meta itemprop="position" content="5">
+                        </li>
+                    <li class="topicpath_item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+        <a itemtype="https://schema.org/Thing" itemprop="item" href="https://www.dlsite.com/bl-pro/work/=/product_id/BJ222351.html">
+          <span itemprop="name">コミックマズル　クズの教育</span>
+        </a>
+        <meta itemprop="position" content="6">
+              </li>
+                            
+      </ul>
+<div class="base_title_br clearfix">
+
+<div class="icon_wrap">
+
+
+
+
+
+
+
+
+</div>
+<h1 itemprop="name" id="work_name">
+<a href="https://www.dlsite.com/bl-pro/work/=/product_id/BJ222351.html" itemprop="url">コミックマズル　クズの教育</a>
+</h1>
+
+<template data-vue-component="dlchannel-topic" data-product-id="BJ222351" data-product-name="コミックマズル　クズの教育" data-maker-name="Reader Store / コミックマズル"></template>
+
+
+  
+    
+  
+
+  
+<template data-vue-component="share-button" data-twitter-share-url="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdlsite.jp%2Fbpwot%2FBJ222351%2F%3Futm_content%3DBJ222351%26locale%3Dja_JP%0A&text=%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%83%9E%E3%82%BA%E3%83%AB%E3%80%80%E3%82%AF%E3%82%BA%E3%81%AE%E6%95%99%E8%82%B2%2F%E8%97%A4%E6%9D%91%E3%81%BE%E3%82%8A%E3%81%AA%20%28%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%83%9E%E3%82%BA%E3%83%AB%29&hashtags=DLsiteがるまに&lang=ja
+" data-share-url="https://www.dlsite.com/bl-pro/work/=/product_id/BJ222351.html" data-share-title="コミックマズル　クズの教育" data-share-maker-name="Reader Store / コミックマズル"></template>
+
+</div>
+      </div>
+      <!-- /top_wrapper -->
+      
+      <!-- wrapper -->
+      <div id="wrapper">
+
+        <template data-vue-component="share-group"></template>
+
+        
+        <!-- main -->
+        <div id="main" data-section_name="main">
+          <!-- main_inner -->
+          <div id="main_inner">
+            
+
+<!-- work_header -->
+<div id="work_header">
+<!-- work_left -->
+<div id="work_left">
+
+<div data-vue-component="product-slider" data-product-id="BJ222351">
+
+<div class="product-slider">
+  <!-- Sample image data -->
+  <div ref="product_slider_data" class="product-slider-data">
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_main.jpg" data-width="316" data-height="450" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_main_240x240.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp1.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp1_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp2.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp2_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp3.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp3_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp4.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp4_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp5.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp5_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp6.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp6_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp7.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp7_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp8.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp8_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp9.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp9_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp10.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp10_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp11.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp11_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp12.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp12_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp13.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp13_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp14.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp14_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp15.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp15_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp16.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp16_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp17.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp17_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp18.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp18_100x100.jpg"></div>
+    <div data-src="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_smp19.jpg" data-width="703" data-height="1000" data-thumb="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_smp19_100x100.jpg"></div>
+  </div>
+
+
+  <!-- Sample viewer -->
+  <div class="work_slider male">
+    <div class="work_slider_container">
+      <div class="slider_body">
+        <div ref="swiper" class="slider_body_inner">
+          <ul class="slider_items trans" ref="body_items" @click="showPopup">
+            <li v-if="items.length === 0" class="slider_item active">
+
+              <picture>
+                <source
+                  srcset="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_main.webp"
+                  type="image/webp"
+                >
+                <img
+                  srcset="//img.dlsite.jp/modpub/images2/work/books/BJ223000/BJ222351_img_main.jpg"
+                  width="auto"
+                  height="450"
+                  alt="コミックマズル　クズの教育 [Reader Store / コミックマズル]"
+                  itemprop="image"
+                >
+              </picture>
+
+            </li>
+          <template v-for="(item, index) in items">
+            <li v-if="index === 0" class="slider_item active">
+
+              <picture>
+                <source
+                  :srcset="item.src.replace('.jpg', '.webp').replace('.stg','')"
+                  type="image/webp"
+                >
+                <img
+                  :srcset="item.src"
+                  alt="コミックマズル　クズの教育 [Reader Store / コミックマズル]"
+                  itemprop="image"
+                >
+              </picture>
+
+            </li>
+            <li v-else class="slider_item">
+
+              <picture>
+                <source
+                  :srcset="item.src.replace('.jpg', '.webp').replace('.stg','')"
+                  type="image/webp"
+                >
+                <img
+                  :srcset="item.src"
+                  class="swiper-lazy"
+                  alt="コミックマズル　クズの教育 [Reader Store / コミックマズル]"
+                >
+              </picture>
+
+            </li>
+          </template>
+          </ul>
+        </div>
+        <div v-cloak v-if="items.length > 1" class="slider_prev" @click="slideTo('prev')"></div>
+        <div v-cloak v-if="items.length > 1" class="slider_next" @click="slideTo('next')"></div>
+      </div>
+
+      <div v-cloak v-if="items.length > 1" ref="ctrl" @wheel="slideScroll" class="slider_controller">
+        <div class="controller_body">
+          <ul ref="ctrl_items" class="controller_items">
+          <template v-for="(item, index) in items">
+            <li class="controller_item" :class="{active:(index === swiper.realIndex)}" @click="slideTo(index)">
+              <div class="thumb_box">
+
+                <picture>
+                  <source
+                    :srcset="item.thumb.src.replace('.jpg', '.webp').replace('.stg','')"
+                    type="image/webp"
+                  >
+                  <img
+                    :srcset="item.thumb.src"
+                    :v-lazy="item.thumb.src"
+                    :width="item.thumb.width"
+                    :height="item.thumb.height"
+                    alt="コミックマズル　クズの教育 [Reader Store / コミックマズル]"
+                  >
+                </picture>
+
+              </div>
+            </li>
+          </template>
+          </ul>
+        </div>
+        <div class="controller_prev" @click="slideTo('prev')"></div>
+        <div class="controller_next" @click="slideTo('next')"></div>
+      </div>
+    </div>
+  </div>
+  <div v-cloak class="work_slider_comp" v-if="items.length > 1">
+    <!-- 枚数 -->
+    <span v-t="{ path: 'product.slider.totalImages', args: [items.length] }"></span>
+  </div>
+
+  <!-- Popup viewer -->
+  <div v-if="popupVisible" class="slider_popup_overlay" @click="hidePopup">
+    <div class="slider_popup" @click.stop>
+      <span class="slider_popup_close" @click="hidePopup"></span>
+      <div class="slider_popup_rightpane">
+        <div class="slider_popup_sidebar">
+        <template v-for="(item, index) in items">
+          <div rel="noopener" target="_blank" :class="{active:(index === swiper.realIndex)}" @click="slideTo(index, false)">
+
+            <picture>
+              <source
+                :srcset="item.thumb.src.replace('.jpg', '.webp').replace('.stg','')"
+                type="image/webp"
+              >
+              <img
+                :src="item.thumb.src"
+                :v-lazy="item.thumb.src"
+                alt="コミックマズル　クズの教育 [Reader Store / コミックマズル]"
+              >
+            </picture>
+
+          </div>
+        </template>
+        </div>
+        <div class="slider_popup_arrows">
+          <div class="slider_popup_button">
+            <div class="slider_popup_prev" @click="slideTo('prev', false)"></div>
+            <div class="slider_popup_next" @click="slideTo('next', false)"></div>
+          </div>
+          <div class="slider_popup_count">{{ swiper.realIndex + 1 }} / {{ items.length }}</div>
+        </div>
+      </div>
+      <div class="slider_popup_leftpane">
+        <div ref="mainbox" class="slider_popup_mainbox" @wheel.prevent="slideScroll">
+          <div class="slider_zoom_container" ref="zoom_container" @mousemove.prevent="setPopupPosition" @click="setPopupImage(true)">
+
+            <picture>
+              <source
+                :srcset="items[swiper.realIndex].src.replace('.jpg', '.webp').replace('.stg','')"
+                type="image/webp"
+              >
+              <img
+                :src="items[swiper.realIndex].src"
+                ref="zoom_container_image"
+                alt="コミックマズル　クズの教育 [Reader Store / コミックマズル]"
+              >
+            </picture>
+
+          </div>
+        </div>
+        <div class="slider_popup_tool">
+          <input id="target1" class="checkbox" name="target" type="checkbox" value="1" v-model="alwaysActualSize" @change="toggleActualSize" @click="toggleActualSize">
+          <label for="target1" class="checkbox-label" v-t="'product.slider.alwaysActual'"></label>
+          <span class="slider_popup_description" v-t="'product.slider.tools'"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+  <script type="text/javascript">
+    
+    jQuery(function($){
+      var isGirlsPro = dlsite.isFemale() && dlsite.isTL() && dlsite.isGirlsGame();
+      var isGirlsDrama = dlsite.isFemale() && dlsite.isTL() && dlsite.isDrama();
+      var isBlPro = dlsite.isFemale() && dlsite.isBL() && dlsite.isBooks();
+      var isBlDrama = dlsite.isFemale() && dlsite.isBL() && dlsite.isDrama();
+      if (dlsite.isComipo() || dlsite.isBooks() || isGirlsPro || isGirlsDrama || isBlPro || isBlDrama){
+        document.querySelector('.product-slider').addEventListener('contextmenu', function(e) { e.preventDefault(); });
+      }
+    });
+    
+  </script>
+
+
+</div>
+<!-- /work_left -->
+
+<!-- work_right -->
+<div id="work_right">
+<div
+  class="work_right_info"
+  data-vue-component="product-price"
+  data-product-id="BJ222351"
+  data-is-check="false"
+  data-is-comingsoon="false"
+>
+  <template v-if="(product.dl_count !== undefined && product.dl_count > 0) || (!isFemale() && product.wishlist_count !== undefined && product.wishlist_count > 0) || product.rate_count > 0 || product.review_count" v-cloak>
+    <product-rank product-id="BJ222351"></product-rank>
+
+    <div v-if="(product.dl_count !== undefined && product.dl_count > 0) || product.rate_count > 0" v-cloak class="work_right_info_item">
+      <dl class="work_right_info_title value">
+        
+        <!-- 評価 ここから -->
+        <template v-if="product.rate_count > 0" v-cloak>
+          <dt v-t="'product.evaluate.rating_label'"></dt>
+          <dd class="star_box" @mouseenter="showRateDetail" @mouseleave="hideRateDetail">
+            <span class="point average_count">{{ product.rate_average_2dp }}</span>
+            <div class="star_wrap">
+              
+              <span class="rate" :class="'rate' + product.rate_average_star"></span>
+
+              <div class="rating_popup" :class="{ open: is_open_rate }" v-if="is_display_rate">
+                <div class="rating_popup_inner">
+                  <div class="rating_content">
+                    <dl class="rating_content_inner">
+                      <dt class="rating_itemTitle" v-t="'product.rating.average'"></dt>
+                      <dd><p class="rating_score">{{ product.rate_average_2dp }}</p></dd>
+                    </dl>
+                    <dl class="rating_content_inner">
+                      <dt class="rating_itemTitle" v-t="'product.rating.ratings'"></dt>
+                      <dd><p class="">{{ product.rate_count|number_format }}</p></dd>
+                    </dl>
+                  </div>
+
+                  <div class="rating_content">
+                    <dl class="rating_content_inner">
+                      <dt class="rating_itemTitle" v-t="'product.rating.rating'"></dt>
+                      <dd>
+                        <dl class="rating_map">
+                          <dt class="rating_map_label">
+                            <p v-t="'product.rating.star_5'"></p>
+                          </dt>
+                          <dd class="rating_map_body">
+                            <div class="rating_meter">
+                              <div class="rating_bar" :style="{ width: is_open_rate ? Math.floor(product.rate_count_detail[4].ratio * 0.8) + 'px' : 0 }"></div>
+                            </div>
+                            ({{ product.rate_count_detail ? product.rate_count_detail[4].count : 0|number_format }})
+                          </dd>
+                          <dt class="rating_map_label">
+                            <p v-t="'product.rating.star_4'"></p>
+                          </dt>
+                          <dd class="rating_map_body">
+                            <div class="rating_meter">
+                              <div class="rating_bar" :style="{ width: is_open_rate ? Math.floor(product.rate_count_detail[3].ratio * 0.8) + 'px' : 0 }"></div>
+                            </div>
+                            ({{ product.rate_count_detail ? product.rate_count_detail[3].count : 0|number_format }})
+                          </dd>
+                          <dt class="rating_map_label">
+                            <p v-t="'product.rating.star_3'"></p>
+                          </dt>
+                          <dd class="rating_map_body">
+                            <div class="rating_meter">
+                              <div class="rating_bar" :style="{ width: is_open_rate ? Math.floor(product.rate_count_detail[2].ratio * 0.8) + 'px' : 0 }"></div>
+                            </div>
+                            ({{ product.rate_count_detail ? product.rate_count_detail[2].count : 0|number_format }})
+                          </dd>
+                          <dt class="rating_map_label">
+                            <p v-t="'product.rating.star_2'"></p>
+                          </dt>
+                          <dd class="rating_map_body">
+                            <div class="rating_meter">
+                              <div class="rating_bar" :style="{ width: is_open_rate ? Math.floor(product.rate_count_detail[1].ratio * 0.8) + 'px' : 0 }"></div>
+                            </div>
+                            ({{ product.rate_count_detail ? product.rate_count_detail[1].count : 0|number_format }})
+                          </dd>
+                          <dt class="rating_map_label">
+                            <p v-t="'product.rating.star_1'"></p>
+                          </dt>
+                          <dd class="rating_map_body">
+                            <div class="rating_meter">
+                              <div class="rating_bar" :style="{ width: is_open_rate ? Math.floor(product.rate_count_detail[0].ratio * 0.8) + 'px' : 0 }"></div>
+                            </div>
+                            ({{ product.rate_count_detail ? product.rate_count_detail[0].count : 0|number_format }})
+                          </dd>
+                        </dl>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <span class="count">({{ product.rate_count|number_format }})</span></p>
+          </dd>
+        </template>
+        <!-- 評価 ここまで -->
+      </dl>
+    </div>
+
+    <div v-if="(!isFemale() && product.wishlist_count !== undefined && product.wishlist_count > 0) || product.review_count" v-cloak class="work_right_info_item">
+      <dl class="work_right_info_title">
+        
+        <!-- レビュー ここから -->
+        <template v-if="product.review_count" v-cloak>
+          <dt v-t="'product.evaluate.review_number_label'"></dt>
+          <dd class="position_fix"><span>{{ product.review_count|number_format }}</span><span class="count"></span>&nbsp;(<a href="#review_link" v-html="$t('product.evaluate.to_rating_label')"></a>)</span></dd>
+        </template>
+        <!-- レビュー ここまで -->
+      </dl>
+    </div>
+    <!--  -->
+  </template>
+</div>
+<div id="work_right_inner">
+
+<!-- 作品名、サークル/ブランド/出版社/レーベル/著者名 ここから -->
+<div id="work_right_name">
+<table id="work_maker">
+      <tr>
+      <th>著者</th>
+      <td>
+                            <a href="https://www.dlsite.com/bl-pro/author/=/author_id/AJ022782">藤村まりな</a>                        </td>
+    </tr>
+    <tr>
+    <th>出版社名</th>
+    <td>
+      <span itemprop="brand" class="maker_name">
+        <a href="https://www.dlsite.com/bl-pro/circle/profile/=/maker_id/BG01505.html">Reader Store / コミックマズル</a>
+      </span>
+      <span class="add_follow" data-vue-component="follow-button" data-follow-key="BG01505" data-follow-name="Reader Store / コミックマズル" v-cloak>
+        <a class="btn_follow" href="https://www.dlsite.com/bl-pro/mypage/followlist/add/=/work_id/BJ222351/product_state/1/maker_id/BG01505.html">フォローする</a>
+      </span>
+    </td>
+  </tr>
+      <tr>
+      <th>レーベル</th>
+      <td>
+        <span class="maker_name">
+          <a href="https://www.dlsite.com/bl-pro/fsr/=/keyword_maker_name/%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%83%9E%E3%82%BA%E3%83%AB+LBL01152/from/work.label">コミックマズル</a>
+        </span>
+      </td>
+    </tr>
+  </table>
+<span data-vue-component="cien-creator-link" data-vue-async="true" data-maker-id="BG01505"></span>
+</div>
+<!-- 作品名、サークル/ブランド/出版社/レーベル/著者名 ここまで -->
+
+
+<table cellspacing="0" id="work_outline">
+  <tr>
+    <th>販売日</th>
+    <td><a href="https://www.dlsite.com/bl-pro/new/=/year/2019/mon/12/day/11/cyear/2019/cmon/12">2019年12月11日</a></td>  </tr>
+        <tr>
+      <th>シリーズ名</th>
+      <td>
+        <a href="https://www.dlsite.com/bl-pro/fsr/=/keyword_work_name/%22%E3%82%AF%E3%82%BA%E3%81%AE%E6%95%99%E8%82%B2%22+TITLE00055091/from/work.titles">クズの教育</a>
+      </td>
+    </tr>
+    
+        <tr>
+    <th>作品形式</th>
+    <td>
+      <div class="work_genre" id="category_type">
+        <a href="https://www.dlsite.com/bl-pro/works/type/=/work_type/MNG/from/icon.work"><span class="icon_MNG" title="マンガ">マンガ</span></a><a href="https://www.dlsite.com/bl-pro/fsr/=/work_category%5B0%5D/books/from/icon.work"><span class="icon_TNB" title="単行本">単行本</span></a>      </div>
+    </td>
+  </tr>
+      <tr>
+      <th>ファイル形式</th>
+      <td>
+        <div class="work_genre">
+          <span class="icon_PVA" title="専用ビューア">専用ビューア</span>        </div>
+      </td>
+    </tr>
+                              <tr>
+        <th>その他</th>
+        <td>
+          <div class="work_genre">
+            <a href="https://www.dlsite.com/bl-pro/fsr/=/work_category%5B0%5D/books/coupling_option/BL1/from/icon.work"><span class="icon_BL1" title="ボーイズラブ">ボーイズラブ</span></a>
+          </div>
+        </td>
+      </tr>
+                <tr>
+      <th>ページ数</th>
+      <td>182</td>
+    </tr>
+  
+      <tr>
+      <th>ジャンル</th>
+      <td>
+        <div class="main_genre">
+                      <a href="https://www.dlsite.com/bl-pro/works/genre/=/genre/037/from/work.genre">ボーイズラブ</a>
+                    
+        </div>
+      </td>
+    </tr>
+  
+       <tr>
+    <th>ファイル容量</th>
+    <td>
+      <div class="main_genre">
+                  139.36MB
+              </div>
+    </td>
+  </tr>
+  </table>
+
+
+
+<ul class="work_feature">
+
+
+<li>
+  <div id="work_protect" class="__nomac _no_mac_protect">
+        <strong>この作品はブラウザ上でそのままご覧いただけます。</strong>
+                        <strong class="_no_mac_viewer">なお、ダウンロードして閲覧するには「DLsite Viewer」が必要です。</strong>
+            <span class="_no_mac_viewer">[&nbsp;<a href="https://www.dlsite.com/bl-pro/guide/dlviewer">専用ビューアについて</a>&nbsp;]</span>
+  </div>
+</li>
+
+
+
+<li v-if="user && user.os && user.os == 'Mac'" v-cloak>
+  <div id="work_win_only">
+        <strong>この作品はMacではDLsitePlayのみの対応となります。</strong>
+    <span>[&nbsp;<a href="https://www.dlsite.com/bl-pro/guide/dlplay">ブラウザ対応について</a>&nbsp;]</span>
+      </div>
+</li>
+
+
+
+
+
+</ul>
+
+
+<script>
+  jQuery(function ($) {
+    var dl_format = '9';
+    var is_dlsiteplay_work = '1';
+
+    if (/Mac/.test(navigator.userAgent) && (dl_format == 10 || dl_format == 9)) {
+      if (is_dlsiteplay_work) {
+        $('._no_mac_viewer').remove();
+      } else {
+        $('._no_mac_protect').remove();
+      }
+    }
+  });
+</script>
+
+
+<div data-vue-component="product-sales-end" data-product-id="BJ222351" v-cloak></div>
+
+</div>
+
+
+
+<div class="trial_download mb30">
+</div>
+
+<ul class="work_edition">
+  
+  </ul>
+
+</div>
+<!-- /work_right-->
+</div>
+<!-- /work_header -->
+
+<div class="title_01 clearfix"><h2>作品内容</h2></div>
+
+<div itemprop="description" class="work_parts_container">
+      
+<div class="work_parts type_text">
+
+        
+    
+          <div class="work_parts_area">
+        <p>郁哉は3年間学年首位を取る優等生。<br />
+しかし親からのプレッシャーから同級生とも遊べず、憂鬱な毎日を過ごしていた。<br />
+そんな日々の中、郁哉の唯一の楽しみは2人っきりになった時に葛城先生からもらえる『ご褒美』だった。 ある日、先生からのご褒美の最中、ふと窓に目をやるとそこには人影が!?<br />
+翌朝、先生と郁哉の『ご褒美』を偶然目撃した、ヤンキーの馬場から呼び止められてしまう。 さらに「先生との関係は誰にも言わないから、俺とも一緒に遊んでくれない?」と言われてしまい―…!?</p>
+      </div>
+
+    
+</div>
+    
+</div>
+
+
+
+<!-- spec -->
+<!-- /spec -->
+
+
+<template data-vue-component="product-relation-titles" data-title-id="TITLE00055091" data-product-id="BJ222351"></template>
+
+
+
+            <!-- same_series -->
+<!-- /same_series -->
+
+<!-- maker_works -->
+<div class="work_series">
+  <div class="title_01 clearfix">
+    <h2>
+      <span class="title">
+                著者作品一覧              </span>
+    </h2>
+        <p class="move"><span><a
+          href="https://www.dlsite.com/bl-pro/fsr/=/keyword_maker_name/AJ022782/from/work.same_author">作品をもっと見る</a></span>
+    </p>
+      </div>
+      <div class="sub_title"><span class="ml10">販売作品</span></div>
+    <div class="recommend_list portrait"
+    data-href="https://www.dlsite.com/bl-pro/load/recommend/detail/v2/=/type/maker_works/workno/BJ270943%2CBJ268296%2CBJ246180%2C"
+    data-type="maker_works"></div>
+  </div>
+<!-- maker_works -->
+
+<!-- label_works -->
+<!-- /label_works -->
+
+<!-- relation -->
+<!-- /relation -->
+
+<!-- same_voice -->
+<!-- /same_voice -->
+
+            <!-- recommend -->
+<div class="title_01 clearfix" data-download-threshold="5"><h2>この作品を買った人はこんな作品も買っています</h2></div>
+<div
+  class="recommend_list portrait"
+  data-section-name="work_recommend_history"
+  data-href="https://www.dlsite.com/bl-pro/load/recommend/v2/=/type/viewsales2/reject/BG01505/product_id/BJ222351.html"
+  data-type="viewsales2"
+></div>
+
+<!-- /recommend -->
+
+<div class="title_01 clearfix"><h2>最近チェックした作品</h2></div>
+<div
+  class="recommend_list portrait"
+  data-section-name="work_recommend_history"
+  data-href="https://www.dlsite.com/bl-pro/load/recommend/v2/=/type/history/product_id/BJ222351.html"
+  data-type="history"
+></div>
+
+
+<script>
+$(function() {
+  // 未ログイン時の挙動対応
+  var islogin = false;
+  if (['1', '3'].indexOf($.cookie('loginchecked')) !== -1) {
+    islogin = true;
+  }
+
+  // サムネイルポップアップ
+  $(document).bind('ajaxSuccess', function() {
+        var $target_blocks = $('.work_main_list_ncol');
+        $target_blocks.each(function () {
+            if ($(this).thumbImgPopup !== undefined) {
+                $(this).thumbImgPopup();
+                $(this).setBlockViewSetting('mheight_01','__sp_detail','end');
+            };
+        });
+    }
+  );
+
+  $.getJSON('https://www.dlsite.com/bl-pro/load/member/uninterest').then(
+    function (res) {
+      var rejects = [].concat(res['reason_1'], res['reason_2'])
+
+      $('.recommend_list').each(function(i, element){
+        var href = element.dataset.href
+        var type = element.dataset.type
+        href && $.get(href).then(function(res){
+          // html適応
+          $(element).html(res)
+
+          // イベント設定
+          $(element).find('li.swiper-slide').each(function(i, li){
+            var $li = $(li)
+
+            // 不要な作品
+            if (~rejects.indexOf($li.data('prod'))) {
+              return $li.remove()
+            }
+
+            // miniメニュー開閉
+            $li.find('.mini_menu').bind('click', function (e) {
+              $li.find('.mini_menu_dropdown').toggleClass('open');
+            })
+
+            // 非表示設定
+            $li.find('.mini_menu_dropdown_inner').bind('click', function() {
+              // 未ログイン時は新規ユーザ登録ページに遷移
+              if (islogin) {
+                $li.find('.recommend_work_item').addClass('hidden');
+                $.get('https://www.dlsite.com/bl-pro/cart/ajax/=/mode/nothanks/product_id/' + $li.data('prod'));
+              } else {
+                window.location.href = 'https://www.dlsite.com/bl-pro/regist/user';
+              }
+            })
+
+            // Vueの拡大ポップアップロジックを利用するためVueのinit処理を行い、コンポーネントをマウントする
+            $(window).triggerHandler('initialize.vue');
+
+            // レコメンド結果通知
+            $li.delegate('a', 'click', function (e) {
+              var $self = $(e.currentTarget);
+
+              //GAイベント送信
+              try {
+                window.ga('send', 'event', dlsite.getName(), 'recommend_' + $li.data('category'), $self[0].pathname);
+              } catch (ex) {
+                //
+              }
+
+              var param = {
+                prod: $li.data('prod'),
+                merch: 'dlsite',
+                spec: $li.data('spec'),
+                cref: $li.data('cref'),
+                cookie: $.cookie('uniqid')
+              };
+
+              if (!param['prod'] || !param['spec'] || !param['cref']) {
+                return true;
+              }
+
+              var url = 'https://dlsite.silveregg.net/pycre5/click?' + $.param(param);
+
+              // クリックイベントを送出
+              if (!navigator.sendBeacon || !navigator.sendBeacon(url)) {
+                $.ajax(url, {
+                  async: false,
+                  timeout: 2000,
+                });
+              }
+
+              return true;
+            });
+          });
+
+          // Swiper
+          new Swiper(element.firstChild, {
+            navigation: {
+              nextEl: '.swiper-button-next.type-' + type,
+              prevEl: '.swiper-button-prev.type-' + type,
+              disabledClass: 'disable',
+            },
+            slidesPerColumn: type === 'viewsales2' ? 2 : 1,
+            slidesPerView: Math.floor($(element).find('.swiper-container').width() / 200),
+            slidesPerGroup: Math.floor($(element).find('.swiper-container').width() / 200),
+            spaceBetween: 10,
+            breakpoints: {
+              1194: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+              },
+              1364: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+              },
+              1534: {
+                slidesPerView: 5,
+                slidesPerGroup: 5,
+              },
+              1704: {
+                slidesPerView: 6,
+                slidesPerGroup: 6,
+              },
+              1874: {
+                slidesPerView: 7,
+                slidesPerGroup: 7,
+              },
+              max: {
+                slidesPerView: 8,
+                slidesPerGroup: 8,
+              }
+            },
+          })
+        });
+      })
+    }
+  )
+})
+</script>
+
+            <!-- review -->
+<div class="title_01 clearfix" id="review_link"><h2>ユーザーレビュー</h2></div>
+
+
+<div class="work_article" id="work_review" data-section_name="work_review">
+
+    <table class="reviewer_most_genre" cellspacing="0">
+    <tbody>
+      <tr>
+        <th>
+          <p>レビュアーに多く選ばれたジャンル :</p>
+        </th>
+        <td>
+                    <span><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/001/from/work.review_genre">学校/学園（8）</a></span>
+                    <span><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/227/from/work.review_genre">教師（5）</a></span>
+                    <span><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/281/from/work.review_genre">同級生/同僚（3）</a></span>
+                    <span><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/037/from/work.review_genre">ボーイズラブ（3）</a></span>
+                    <span><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/006/from/work.review_genre">退廃/背徳/インモラル（2）</a></span>
+                    <span><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/074/from/work.review_genre">制服（2）</a></span>
+                    <span><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/255/from/work.review_genre">メガネ（2）</a></span>
+                    <span><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/140/from/work.review_genre">調教（2）</a></span>
+                    <span><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/400/from/work.review_genre">学生（2）</a></span>
+                    <span><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/419/from/work.review_genre">不良/ヤンキー（2）</a></span>
+                  </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="review_head">
+      <p class="float_l review_count">レビュー数 : <span class="review_work_count">11件</span></p>
+              <template data-vue-component="product-review-order" data-layout="pc" data-product_id="BJ222351"></template>
+        </div>
+
+  <!-- work_review_list -->
+  <table id="work_review_list" cellspacing="0">
+        <tbody itemprop="review" itemscope itemtype="https://schema.org/Review">
+      <tr>
+        <td class="review_title">
+          <p class="pickup_mark">ピックアップ</p>          <div class="review_title_l">
+            <div class="title"><span itemprop="name">
+                            <a href="https://www.dlsite.com/bl-pro/work/reviewlist/=/reviewer/REV0036447/product_id/BJ222351.html">同人先行で読んだ者ですが</a>
+                          </span></div>
+            <p>
+              <meta itemprop="datePublished" content="2019-12-21">2019年12月21日&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name"><a href="https://www.dlsite.com/bl-pro/reviewlist/=/reviewer/REV0036447">通りすがりのもの</a></span> さん</span>
+                              <span class="popularity_reviewer silver">人気レビュアー：20位</span>
+                                          <span class="purchased">購入済み</span>
+                          </p>
+          </div>
+                    <div class="review_title_r">
+            <span class="reviewer_recommend">レビュアーオススメ！</span>
+          </div>
+                  </td>
+      </tr>
+      <tr>
+        <td class="review_main _review_main">
+          
+          
+          <div class="_SW2" >
+            <p class="reviewer_descrip" itemprop="reviewBody">感想を纏めると「エロい、最高、絵綺麗、エロい」です。実は同じくこちらのサイトの同人コーナーで先に外伝を読んでいてそちらが非常に素晴らしかったので商業の方も読みたいとずっと思っていました。<br />
+<br />
+結果、満足。いやーエロい!エロだけでなくストーリーもなかなか充実してて最後まで先生と同級生のどっちとくっつくのか気になりながら読めました。表情が全体的に迫真的過ぎて笑ってしまう所もありますが、絵自体は見てもらって分かる通り凄く綺麗です。<br />
+<br />
+1つ言うなら同人読んでもらった方なら分かると思うのですが、この作家さん性器の絵も凄く凝っていらっしゃるんですよね。白抜きが非常に勿体ない!!商業版なので仕方ないことですが…それでもエロいんだから凄い。<br />
+いつかR18版を発売してくれないでしょうか……?絶対買うのですが!!<br />
+同人の続きも出してくれるみたいでそちらも非常に楽しみです!!</p>
+            <p class="review_ref">
+              <input value="役に立った" type="button" class="_btn_good_review btn_default" data-review_id="39245" data-product_id="BJ222351">
+              <span class="useful">12人 が役に立ったと答えています</span>              <span class="review_report">[&nbsp;<a href="https://www.dlsite.com/bl-pro/contact/review/=/reviewer_id/REV0036447/product_id/BJ222351.html">報告する</a>&nbsp;]</span>
+            </p>
+            <p class="mini_message _review_message" style="display: none;">&nbsp;</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+        <tbody itemprop="review" itemscope itemtype="https://schema.org/Review">
+      <tr>
+        <td class="review_title">
+                    <div class="review_title_l">
+            <div class="title"><span itemprop="name">
+                            <a href="https://www.dlsite.com/bl-pro/work/reviewlist/=/reviewer/REV0054958/product_id/BJ222351.html">ストーリーも良い</a>
+                          </span></div>
+            <p>
+              <meta itemprop="datePublished" content="2020-07-14">2020年07月14日&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name"><a href="https://www.dlsite.com/bl-pro/reviewlist/=/reviewer/REV0054958">低音好き</a></span> さん</span>
+                              <span class="popularity_reviewer bronze">人気レビュアー：Best200</span>
+                                          <span class="purchased">購入済み</span>
+                          </p>
+          </div>
+                    <div class="review_title_r">
+            <span class="reviewer_recommend">レビュアーオススメ！</span>
+          </div>
+                  </td>
+      </tr>
+      <tr>
+        <td class="review_main _review_main">
+          
+                    <div class="_SW1">
+            <p class="review_caution">
+              <strong>※ネタバレ※</strong>
+              このレビューには作品の内容に関する記述が含まれています。              <span class="review_open"><a href="#" onclick="return false;">レビューを表示する</a></span>
+            </p>
+          </div>
+          
+          <div class="_SW2"  style="display: none;" >
+            <p class="reviewer_descrip" itemprop="reviewBody">先に優等生に…を購入したのですが、こちらも当然気になって購入しました。<br />
+まず絵が丁寧だし綺麗!だからか、エロさも満点でそれだけでも価値があるのに、こちらはエロだけではなくストーリーが描き込まれていてその内容に少し切なくなりました。良い意味でです。<br />
+ただひたすらヤるのも悪くはないですが、ここまでストーリーがあるのはこの先もとても応援、期待したくなります!<br />
+先生切ない…けどやっぱり大人な選択なんだろうなぁ</p>
+            <p class="review_ref">
+              <input value="役に立った" type="button" class="_btn_good_review btn_default" data-review_id="52950" data-product_id="BJ222351">
+              <span class="useful">1人 が役に立ったと答えています</span>              <span class="review_report">[&nbsp;<a href="https://www.dlsite.com/bl-pro/contact/review/=/reviewer_id/REV0054958/product_id/BJ222351.html">報告する</a>&nbsp;]</span>
+            </p>
+            <p class="mini_message _review_message" style="display: none;">&nbsp;</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+        <tbody itemprop="review" itemscope itemtype="https://schema.org/Review">
+      <tr>
+        <td class="review_title">
+                    <div class="review_title_l">
+            <div class="title"><span itemprop="name">
+                            <a href="https://www.dlsite.com/bl-pro/work/reviewlist/=/reviewer/REV0044606/product_id/BJ222351.html">訳アリ三角関係</a>
+                          </span></div>
+            <p>
+              <meta itemprop="datePublished" content="2020-03-17">2020年03月17日&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name"><a href="https://www.dlsite.com/bl-pro/reviewlist/=/reviewer/REV0044606">瀬名</a></span> さん</span>
+                              <span class="popularity_reviewer bronze">人気レビュアー：Best300</span>
+                                          <span class="purchased">購入済み</span>
+                          </p>
+          </div>
+                  </td>
+      </tr>
+      <tr>
+        <td class="review_main _review_main">
+                    <div class="reviewer_genre">
+            <p>レビュアーが選んだジャンル :</p>
+            <ul class="reviewer_select_genre">
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/044/from/review.genre">総受</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/074/from/review.genre">制服</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/227/from/review.genre">教師</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/281/from/review.genre">同級生/同僚</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/400/from/review.genre">学生</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/001/from/review.genre">学校/学園</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/037/from/review.genre">ボーイズラブ</a></li>
+                          </ul>
+          </div>
+          
+          
+          <div class="_SW2" >
+            <p class="reviewer_descrip" itemprop="reviewBody">先に番外編0話を読んでからの購入です。<br />
+<br />
+学校にも家にも居場所のない青年郁哉が教師と同級生と三角関係になるストーリーです。<br />
+薄暗い三角関係で、最後までどちらとくっつくのか分からずドキドキしながら読み進めました。王道の三角関係ではありませんが、そこが良かったです。<br />
+<br />
+イラストのタッチもとても丁寧で読みやすいので、番外編と共にオススメです。</p>
+            <p class="review_ref">
+              <input value="役に立った" type="button" class="_btn_good_review btn_default" data-review_id="46020" data-product_id="BJ222351">
+              <span class="useful">1人 が役に立ったと答えています</span>              <span class="review_report">[&nbsp;<a href="https://www.dlsite.com/bl-pro/contact/review/=/reviewer_id/REV0044606/product_id/BJ222351.html">報告する</a>&nbsp;]</span>
+            </p>
+            <p class="mini_message _review_message" style="display: none;">&nbsp;</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+        <tbody itemprop="review" itemscope itemtype="https://schema.org/Review">
+      <tr>
+        <td class="review_title">
+                    <div class="review_title_l">
+            <div class="title"><span itemprop="name">
+                            <a href="https://www.dlsite.com/bl-pro/work/reviewlist/=/reviewer/REV0074685/product_id/BJ222351.html">ヤンキー可愛い</a>
+                          </span></div>
+            <p>
+              <meta itemprop="datePublished" content="2021-07-12">2021年07月12日&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name"><a href="https://www.dlsite.com/bl-pro/reviewlist/=/reviewer/REV0074685">ともの里</a></span> さん</span>
+                                          <span class="purchased">購入済み</span>
+                          </p>
+          </div>
+                    <div class="review_title_r">
+            <span class="reviewer_recommend">レビュアーオススメ！</span>
+          </div>
+                  </td>
+      </tr>
+      <tr>
+        <td class="review_main _review_main">
+                    <div class="reviewer_genre">
+            <p>レビュアーが選んだジャンル :</p>
+            <ul class="reviewer_select_genre">
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/001/from/review.genre">学校/学園</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/112/from/review.genre">ノーマルプレイ</a></li>
+                          </ul>
+          </div>
+          
+                    <div class="_SW1">
+            <p class="review_caution">
+              <strong>※ネタバレ※</strong>
+              このレビューには作品の内容に関する記述が含まれています。              <span class="review_open"><a href="#" onclick="return false;">レビューを表示する</a></span>
+            </p>
+          </div>
+          
+          <div class="_SW2"  style="display: none;" >
+            <p class="reviewer_descrip" itemprop="reviewBody">初めてヤンキー攻めのBL漫画よんだのがこちらの作品だったのですが、攻めが健気で可愛い……<br />
+もっと強引でだったりするのかなとか勝手に思ってたけど凄く可愛くて萌えた……<br />
+告白OKの時の攻めの照れ顔は卑怯可愛すぎ<br />
+先生も腹黒でいいキャラしてるし<br />
+受けも言うまでもなく可愛い。<br />
+そんでもって絵がえちちでとても良かったです…</p>
+            <p class="review_ref">
+              <input value="役に立った" type="button" class="_btn_good_review btn_default" data-review_id="73290" data-product_id="BJ222351">
+                            <span class="review_report">[&nbsp;<a href="https://www.dlsite.com/bl-pro/contact/review/=/reviewer_id/REV0074685/product_id/BJ222351.html">報告する</a>&nbsp;]</span>
+            </p>
+            <p class="mini_message _review_message" style="display: none;">&nbsp;</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+        <tbody itemprop="review" itemscope itemtype="https://schema.org/Review">
+      <tr>
+        <td class="review_title">
+                    <div class="review_title_l">
+            <div class="title"><span itemprop="name">
+                            <a href="https://www.dlsite.com/bl-pro/work/reviewlist/=/reviewer/REV0051967/product_id/BJ222351.html">ぐいぐい引き込まれる!</a>
+                          </span></div>
+            <p>
+              <meta itemprop="datePublished" content="2020-05-27">2020年05月27日&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name"><a href="https://www.dlsite.com/bl-pro/reviewlist/=/reviewer/REV0051967">フローズンミント</a></span> さん</span>
+                                          <span class="purchased">購入済み</span>
+                          </p>
+          </div>
+                    <div class="review_title_r">
+            <span class="reviewer_recommend">レビュアーオススメ！</span>
+          </div>
+                  </td>
+      </tr>
+      <tr>
+        <td class="review_main _review_main">
+                    <div class="reviewer_genre">
+            <p>レビュアーが選んだジャンル :</p>
+            <ul class="reviewer_select_genre">
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/265/from/review.genre">薬物</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/227/from/review.genre">教師</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/281/from/review.genre">同級生/同僚</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/001/from/review.genre">学校/学園</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/006/from/review.genre">退廃/背徳/インモラル</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/037/from/review.genre">ボーイズラブ</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/138/from/review.genre">フェラチオ</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/140/from/review.genre">調教</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/142/from/review.genre">淫乱</a></li>
+                            <li><a href="https://www.dlsite.com/bl-pro/fsr/=/genre/160/from/review.genre">アナル</a></li>
+                          </ul>
+          </div>
+          
+          
+          <div class="_SW2" >
+            <p class="reviewer_descrip" itemprop="reviewBody">ずっと気になっていたこの作品、期待以上でした!<br />
+<br />
+クズの教育、というタイトルにふさわしい先生です。<br />
+ターゲットは優等生の郁哉くん。その心の隙間に用心深く入り込み、とりこにしちゃいます。<br />
+<br />
+クラスメートの馬場くんに見られてから、二人の関係は大きく変わっていくのですが、読み進めるうちに先生のエグさにぞわっとしました。<br />
+<br />
+救いとしては、郁哉くんの世界が広がったこと。<br />
+依存ではなくて互いに大事に支え合う相手と出会えたこと。<br />
+ほっとしました。<br />
+<br />
+画力もプロットも素晴らしく、すっごく魅力的な作品です!</p>
+            <p class="review_ref">
+              <input value="役に立った" type="button" class="_btn_good_review btn_default" data-review_id="50437" data-product_id="BJ222351">
+                            <span class="review_report">[&nbsp;<a href="https://www.dlsite.com/bl-pro/contact/review/=/reviewer_id/REV0051967/product_id/BJ222351.html">報告する</a>&nbsp;]</span>
+            </p>
+            <p class="mini_message _review_message" style="display: none;">&nbsp;</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+        <tbody itemprop="review" itemscope itemtype="https://schema.org/Review">
+      <tr>
+        <td class="review_title">
+                    <div class="review_title_l">
+            <div class="title"><span itemprop="name">
+                            <a href="https://www.dlsite.com/bl-pro/work/reviewlist/=/reviewer/REV0051499/product_id/BJ222351.html">ものすごくおすすめ</a>
+                          </span></div>
+            <p>
+              <meta itemprop="datePublished" content="2020-05-07">2020年05月07日&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name"><a href="https://www.dlsite.com/bl-pro/reviewlist/=/reviewer/REV0051499">ばかん</a></span> さん</span>
+                                          <span class="purchased">購入済み</span>
+                          </p>
+          </div>
+                    <div class="review_title_r">
+            <span class="reviewer_recommend">レビュアーオススメ！</span>
+          </div>
+                  </td>
+      </tr>
+      <tr>
+        <td class="review_main _review_main">
+          
+          
+          <div class="_SW2" >
+            <p class="reviewer_descrip" itemprop="reviewBody">いや、びっくりしました<br />
+ただただエロいのはもちろんですが、エロいだけじゃなかった<br />
+同人誌と一緒に読んだら感動してしまってしばらく頭から離れなかった。<br />
+ここ何年かで読んだBLの中で一番良かった。<br />
+3角関係の話なんだけど、同人誌も読むことを勧めます。<br />
+先に同人誌を読んでたからなのかエモかった。商業なので白抜きは残念だけどどうでもいいくらい良かった</p>
+            <p class="review_ref">
+              <input value="役に立った" type="button" class="_btn_good_review btn_default" data-review_id="49284" data-product_id="BJ222351">
+                            <span class="review_report">[&nbsp;<a href="https://www.dlsite.com/bl-pro/contact/review/=/reviewer_id/REV0051499/product_id/BJ222351.html">報告する</a>&nbsp;]</span>
+            </p>
+            <p class="mini_message _review_message" style="display: none;">&nbsp;</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+      </table>
+
+  <table class="review_write">
+    <tr>
+            <td>
+        <div class="review_more">
+          <p><a href="https://www.dlsite.com/bl-pro/work/reviewlist/=/product_id/BJ222351.html">すべてのレビューを見る （11件）</a></p>
+        </div>
+      </td>
+            <td><div class="review_btn"><a href="https://www.dlsite.com/bl-pro/review/write/work/=/product_id/BJ222351.html" class="btn_post size_xxl fs15"><i>レビューを投稿する</i></a></div></td>
+    </tr>
+  </table>
+</div>
+<!-- /work_review_list -->
+
+<script type="text/javascript">
+//<!CDATA[
+
+jQuery(function($){
+    "use strict";
+    var wait = false;
+    $('._btn_good_review').bind('click', function(){
+        if(wait){
+            return false;
+        }
+        wait = true;
+        var $self = $(this);
+        $.post('https://www.dlsite.com/bl-pro/mypage/review/ajax', {act: 'good_review', review_id: $self.data('review_id'), product_id: $self.data('product_id')}, function(data){
+            wait = false;
+            $self.parents('td').find('._review_message').text(data.text).show();
+        }, 'json');
+        return false;
+    });
+});
+
+//]]>
+</script>
+
+
+            <div class="title_01 clearfix">
+  <h2>関連まとめ記事</h2>
+</div>
+  <table class="matome_write">
+    <tbody>
+    <tr>
+      <td>
+        <p class="base_text">
+          この作品のまとめ記事を投稿しよう！                     書き方や詳細については <a rel="noopener" href="https://ch.dlsite.com/matome/185" target="_blank">まとめの作り方</a> をご覧ください。        </p>
+      </td>
+      <td>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="dlchannel">
+    <div class="matome_container">
+      <div id="matome-swiper" class="swiper-container">
+        <ul class="matome_box swiper-wrapper" style="display:none;">
+                      <li class="matome_box_inner swiper-slide">
+              <div class="matome_content">
+                <div class="matome_img_main">
+                  <a rel="noopener" href="https://ch.dlsite.com/matome/55023?dls=&k_matome_bl-pro_pc" target="_blank">
+                    <img data-src="https://media.dlsite.com/proxy/ada6ad2091c49a794142662f413d8f5a4c0493f9/68747470733a2f2f696d672e646c736974652e6a702f6d6f647075622f696d61676573322f776f726b2f646f756a696e2f524a3237353030302f524a3237343432395f696d675f6d61696e2e6a7067" alt="この短小ヤンキーVS巨根学生の××××比べがエロい！"
+                         title="この短小ヤンキーVS巨根学生の××××比べがエロい！" class="swiper-lazy"></a>
+                    <div class="swiper-lazy-preloader"></div>
+                </div>
+                <p class="matome_content_title">
+                  <a href="https://ch.dlsite.com/matome/55023?dls=&k_matome_bl-pro_pc"
+                     rel="noopener" target="_blank">この短小ヤンキーVS巨根学生の××××比べがエロい！</a>
+                </p>
+              </div>
+            </li>
+                      <li class="matome_box_inner swiper-slide">
+              <div class="matome_content">
+                <div class="matome_img_main">
+                  <a rel="noopener" href="https://ch.dlsite.com/matome/52757?dls=&k_matome_bl-pro_pc" target="_blank">
+                    <img data-src="https://media.dlsite.com/proxy/9c0f628cba1b849d11ba694f686c3537569f974d/68747470733a2f2f696d672e646c736974652e6a702f6d6f647075622f696d61676573322f776f726b2f626f6f6b732f424a3232333030302f424a3232323335315f696d675f6d61696e2e6a7067" alt="藤村まりな先生の『クズの教育』がものすっごく素晴らしい！"
+                         title="藤村まりな先生の『クズの教育』がものすっごく素晴らしい！" class="swiper-lazy"></a>
+                    <div class="swiper-lazy-preloader"></div>
+                </div>
+                <p class="matome_content_title">
+                  <a href="https://ch.dlsite.com/matome/52757?dls=&k_matome_bl-pro_pc"
+                     rel="noopener" target="_blank">藤村まりな先生の『クズの教育』がものすっごく素晴らしい！</a>
+                </p>
+              </div>
+            </li>
+                      <li class="matome_box_inner swiper-slide">
+              <div class="matome_content">
+                <div class="matome_img_main">
+                  <a rel="noopener" href="https://ch.dlsite.com/matome/55315?dls=&k_matome_bl-pro_pc" target="_blank">
+                    <img data-src="https://media.dlsite.com/proxy/0d004fea640540d539703a7fb4fef4cfd399a768/68747470733a2f2f696d672e646c736974652e6a702f6d6f647075622f696d61676573322f776f726b2f646f756a696e2f524a3237353030302f524a3237343736305f696d675f6d61696e2e6a7067" alt="あの衝撃の教師×生徒作品の続編が発売！！～優等生にセックスなんか教えるんじゃなかった２～"
+                         title="あの衝撃の教師×生徒作品の続編が発売！！～優等生にセックスなんか教えるんじゃなかった２～" class="swiper-lazy"></a>
+                    <div class="swiper-lazy-preloader"></div>
+                </div>
+                <p class="matome_content_title">
+                  <a href="https://ch.dlsite.com/matome/55315?dls=&k_matome_bl-pro_pc"
+                     rel="noopener" target="_blank">あの衝撃の教師×生徒作品の続編が発売！！～優等生にセックスなんか教えるんじゃなかった２～</a>
+                </p>
+              </div>
+            </li>
+                      <li class="matome_box_inner swiper-slide">
+              <div class="matome_content">
+                <div class="matome_img_main">
+                  <a rel="noopener" href="https://ch.dlsite.com/matome/94426?dls=&k_matome_bl-pro_pc" target="_blank">
+                    <img data-src="https://media.dlsite.com/proxy/1507b718021986e76909697dd88cb5bac13d52eb/68747470733a2f2f7777772e646c736974652e636f6d2f6d6f647075622f6c702f626c2f626269636f6c6c652f696d672f73746f72792f73746f72795f63686172612e706e67" alt="【購入感想】ゲイビ男優アイドル！？超豪華執筆陣×300P越えの最強BLアンソロジーが登場！"
+                         title="【購入感想】ゲイビ男優アイドル！？超豪華執筆陣×300P越えの最強BLアンソロジーが登場！" class="swiper-lazy"></a>
+                    <div class="swiper-lazy-preloader"></div>
+                </div>
+                <p class="matome_content_title">
+                  <a href="https://ch.dlsite.com/matome/94426?dls=&k_matome_bl-pro_pc"
+                     rel="noopener" target="_blank">【購入感想】ゲイビ男優アイドル！？超豪華執筆陣×300P越えの最強BLアンソロジーが登場！</a>
+                </p>
+              </div>
+            </li>
+                      <li class="matome_box_inner swiper-slide">
+              <div class="matome_content">
+                <div class="matome_img_main">
+                  <a rel="noopener" href="https://ch.dlsite.com/matome/69357?dls=&k_matome_bl-pro_pc" target="_blank">
+                    <img data-src="https://media.dlsite.com/proxy/9c0f628cba1b849d11ba694f686c3537569f974d/68747470733a2f2f696d672e646c736974652e6a702f6d6f647075622f696d61676573322f776f726b2f626f6f6b732f424a3232333030302f424a3232323335315f696d675f6d61696e2e6a7067" alt="【クズの教育】エロいけど切ないBLコミック2冊をご紹介【1人と一人の3650日】"
+                         title="【クズの教育】エロいけど切ないBLコミック2冊をご紹介【1人と一人の3650日】" class="swiper-lazy"></a>
+                    <div class="swiper-lazy-preloader"></div>
+                </div>
+                <p class="matome_content_title">
+                  <a href="https://ch.dlsite.com/matome/69357?dls=&k_matome_bl-pro_pc"
+                     rel="noopener" target="_blank">【クズの教育】エロいけど切ないBLコミック2冊をご紹介【1人と一人の3650日】</a>
+                </p>
+              </div>
+            </li>
+                      <li class="matome_box_inner swiper-slide">
+              <div class="matome_content">
+                <div class="matome_img_main">
+                  <a rel="noopener" href="https://ch.dlsite.com/matome/55017?dls=&k_matome_bl-pro_pc" target="_blank">
+                    <img data-src="https://media.dlsite.com/proxy/1d2d41a63b2954e0604f0acedd69b0706e26c070/68747470733a2f2f626c6f672d696d67732d3132392e6663322e636f6d2f6e2f622f6f2f6e626f786e77676e2f626c2e676966" alt="2019年に私のオナニーを捗らせてくれたBLコミックを紹介させて頂きます"
+                         title="2019年に私のオナニーを捗らせてくれたBLコミックを紹介させて頂きます" class="swiper-lazy"></a>
+                    <div class="swiper-lazy-preloader"></div>
+                </div>
+                <p class="matome_content_title">
+                  <a href="https://ch.dlsite.com/matome/55017?dls=&k_matome_bl-pro_pc"
+                     rel="noopener" target="_blank">2019年に私のオナニーを捗らせてくれたBLコミックを紹介させて頂きます</a>
+                </p>
+              </div>
+            </li>
+                      <li class="matome_box_inner swiper-slide">
+              <div class="matome_content">
+                <div class="matome_img_main">
+                  <a rel="noopener" href="https://ch.dlsite.com/matome/130679?dls=&k_matome_bl-pro_pc" target="_blank">
+                    <img data-src="https://media.dlsite.com/proxy/e3cbd91419b75d5c33d77364cdffa0db91488106/68747470733a2f2f696d672e646c736974652e6a702f6d6f647075622f696d61676573322f776f726b2f646f756a696e2f524a3333343030302f524a3333333437305f696d675f6d61696e2e6a7067" alt="【BL】弟ごめん、お兄ちゃんはオレ様系男の子といちゃいちゃするエロ本で抜きます【あまあま】"
+                         title="【BL】弟ごめん、お兄ちゃんはオレ様系男の子といちゃいちゃするエロ本で抜きます【あまあま】" class="swiper-lazy"></a>
+                    <div class="swiper-lazy-preloader"></div>
+                </div>
+                <p class="matome_content_title">
+                  <a href="https://ch.dlsite.com/matome/130679?dls=&k_matome_bl-pro_pc"
+                     rel="noopener" target="_blank">【BL】弟ごめん、お兄ちゃんはオレ様系男の子といちゃいちゃするエロ本で抜きます【あまあま】</a>
+                </p>
+              </div>
+            </li>
+                      <li class="matome_box_inner swiper-slide">
+              <div class="matome_content">
+                <div class="matome_img_main">
+                  <a rel="noopener" href="https://ch.dlsite.com/matome/110582?dls=&k_matome_bl-pro_pc" target="_blank">
+                    <img data-src="https://media.dlsite.com/proxy/9787555c0edf879d718d2a6f4f03c481d6c3b950/68747470733a2f2f696d672e646c736974652e6a702f6d6f647075622f696d61676573322f776f726b2f646f756a696e2f524a3330323030302f524a3330313132325f696d675f736d70312e6a7067" alt="【BL】3人でエッチする作品5選！～愛されトロトロセックス！～"
+                         title="【BL】3人でエッチする作品5選！～愛されトロトロセックス！～" class="swiper-lazy"></a>
+                    <div class="swiper-lazy-preloader"></div>
+                </div>
+                <p class="matome_content_title">
+                  <a href="https://ch.dlsite.com/matome/110582?dls=&k_matome_bl-pro_pc"
+                     rel="noopener" target="_blank">【BL】3人でエッチする作品5選！～愛されトロトロセックス！～</a>
+                </p>
+              </div>
+            </li>
+                  </ul>
+      </div>
+      <div class="carousel_arrow_left swiper-button-prev"></div>
+      <div class="carousel_arrow_right swiper-button-next"></div>
+    </div>
+    <ul class="matome_more">
+              <li><p class="matome_text"><a href="https://ch.dlsite.com/antenna/477452/contents?mode=matome"
+                                      rel="noopener" target="_blank">すべてのまとめ記事を見る（30件）</a></p></li>
+            <li class="matome_btn"><a href="https://ch.dlsite.com/matome/create" rel="noopener" target="_blank"
+                                class="btn_post size_xxl fs15"><i>まとめ記事を作成する</i></a></li>
+    </ul>
+  </div>
+
+  <script>
+      $(function () {
+          // Swiper4系
+          var swiper = new Swiper('#matome-swiper', {
+              slidesPerView: 6,
+              slidesPerGroup: 6,
+              spaceBetween: 20,
+              watchSlidesVisibility: true,
+              navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
+              },
+              preloadImages: false,
+              lazy: true,
+              breakpoints: {
+                  1900: {
+                      slidesPerView: 5,
+                      slidesPerGroup: 5,
+                  },
+                  1620: {
+                      slidesPerView: 4,
+                      slidesPerGroup: 4,
+                  },
+                  1390: {
+                      slidesPerView: 3,
+                      slidesPerGroup: 3,
+                  },
+                  1150: {
+                      slidesPerGroup: 2,
+                      slidesPerView: 2,
+                  }
+              }
+          });
+
+          $('.matome_box').show();
+
+            //要素表示時読み込み
+        var scrollIn = function(event) {
+            var target_rect = document.getElementById('matome-swiper').getBoundingClientRect();
+            if (0 < target_rect.top && target_rect.bottom <= window.innerHeight) {
+                swiper.lazy.load();
+                window.removeEventListener('scroll', scrollIn, false);
+            }
+        };
+        window.addEventListener('scroll', scrollIn, false);
+
+       $('.matome_box').show();
+      });
+  </script>
+
+
+            
+            
+            
+            
+            
+          </div>
+          <!-- /main_inner -->
+        </div>
+        <!-- /main -->
+
+        <template data-vue-component="restriction-of-countries"></template>
+        <template data-vue-component="notice"></template>
+
+      </div>
+      <!-- /wrapper -->
+
+      <!-- right -->
+      <div id="right" data-section_name="right">
+        
+        
+        
+        <div id="work_buy_box_wrapper" data-vue-component="product-price" data-product-id="BJ222351" data-is-check="" data-is-comingsoon="0" data-section_name="right_work_price">
+  <div v-if="product.price !== undefined && (product.on_sale || product.is_rental || is_bought || rentaled)" v-cloak class="work_buy_main">
+    
+    <div id="work_price">
+      <div v-if="product.on_sale" class="work_buy_type" :class="class_buy_type_sell" @click.stop="buy_type = 'sell'">
+        
+
+        <div v-if="product.is_discount || product.is_pointup || product.is_limit_work || rentaled" class="campaign_info">
+          <p v-if="product.is_limit_work" class="type_quantity"><span v-t="'product.title_works.limit_sales'"></span></p>
+          <!-- タイムセール -->
+          <p v-if="product.is_timesale" class="type_sale">
+            <span>{{$t('product.title_works.limit_sales')}} {{ product.discount_rate == 100 ? $t('product.price.discount_free') : product.discount_rate + '%OFF' }}</span>
+          </p>
+          <!-- 割引・無料販売 -->
+          <template v-else-if="product.is_discount">
+            <p v-if="product.discount_to && !dlsite.isComipo()" class="type_sale transition">
+              <a rel="noopener" :href="product.discount_to">
+                <span>{{ product.discount_rate == 100 ? $t('product.price.discount_free') : product.discount_rate + '%OFF' }}<span v-if="product.discount_end_date" class="period">{{ $t('product.price.til', [product.discount_end_date]) }}</span><span class="fs11" v-t="'product.price.sale_link'"></span></span>
+              </a>
+            </p>
+            <p v-else class="type_sale">
+              <span>{{ product.discount_rate == 100 ? $t('product.price.discount_free') : product.discount_rate + '%OFF' }}<span class="period" v-if="product.discount_end_date">{{ $t('product.price.til', [product.discount_end_date]) }}</span></span>
+            </p>
+          </template>
+          <!-- ポイント還元 -->
+          <p v-if="product.is_pointup && (product.product_point || product.default_point)" class="type_point">
+            <span>{{ $t('product.price.point_return', [product.product_point_rate]) }}<span v-if="product.pointup_end_date" class="period">{{ $t('product.price.til', [product.pointup_end_date]) }}</span></span>
+          </p>
+        </div>
+
+        <div class="work_buy_container">
+          
+                    
+          <div class="work_buy_body" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+            <meta itemprop="price" :content="real_price">
+            <meta itemprop="priceCurrency" content="JPY">
+            <div v-if="product.is_discount" class="work_buy_label" v-t="'product.price.special_price'"><!-- セール特価 --></div>
+            <div v-else class="work_buy_label" v-t="'product.price.price'"><!-- 価格 --></div>
+            <div class="work_buy_content">
+              <strong v-if="product.is_discount" class="price">{{ real_price | number_format }}<i v-html="yen_symbol_label"></i></strong>
+              <span v-else class="price">{{ product.price_str }}<i v-html="yen_symbol_label"></i></span>
+              <!-- 通貨換算額 -->
+              <tempalate v-if="locale_price">
+                <span class="separator">/</span>
+                <strong  class="price" v-html="locale_price"></strong>
+              </template>
+            </div>
+          </div>
+
+          <div v-if="product.is_discount" class="work_buy_body">
+            <div class="work_buy_label" v-t="'product.price.normal_price'"><!-- 通常価格 --></div>
+            <div class="work_buy_content">
+                <span class="strike">{{ product.official_price_str || product.price_str }}<i v-html="yen_symbol_label"></i></span>
+                <!-- 通貨換算額 -->
+                <template v-if="locale_official_price">
+                  <span class="separator">/</span>
+                  <span class="strike" v-html="locale_official_price"></span>
+                </template>
+            </div>
+          </div>
+
+          <div v-if="dlsite.getLocale() != 'ja-jp'" class="work_buy_body">
+            <p>[&nbsp;<a :href="estimation_link" v-t="'product.price.estimation'"></a>&nbsp;]</p>
+          </div>
+
+          <div v-if="real_point" class="work_buy_body">
+            <div class="work_buy_label" v-t="'product.price.point'"><!-- ポイント --></div>
+            <div class="work_buy_content">
+              <strong class="work_point point_up">{{ real_point | number_format }}<i v-if="real_point">pt ({{ $t('product.price.point_return', [real_point_rate]) }})</i><i v-else>pt</i></strong>
+            </div>
+          </div>
+          
+                                        
+          <div v-if="bestCouponDiscount" v-cloak class="coupon_available">
+            <span class="coupon_available_head">会員登録でクーポンを複数プレゼント！</span>
+            <div class="coupon_available_inner">
+              <dl class="coupon_detail">
+                <dt class="ex">一番お得なクーポン利用価格</dt>
+                <dd class="total type_jpy">
+                  {{ (product.price - bestCouponDiscount).toLocaleString() }}<span>円</span>
+                  
+                </dd>
+                <dd class="total" v-html="$options.filters.exchanger_discount_format(product.locale_price, bestCouponRate, dlsite.getLocale())"></dd>
+              </dl>
+            </div>
+          </div>
+          
+          <div v-else-if="bestUserCoupon" v-cloak class="coupon_available">
+            <div class="coupon_available_inner">
+              <dl class="coupon_detail">
+                <dt class="ex">一番お得なクーポン利用価格</dt>
+                <dd class="total type_jpy">
+                  {{ (product.price - bestUserCouponDiscount).toLocaleString() }}<span>円</span>
+                  
+                </dd>
+                <dd class="total" v-html="$options.filters.exchanger_discount_format(product.locale_price, bestUserCouponRate, dlsite.getLocale())"></dd>
+              </dl>
+            </div>
+            <span class="attended">対象クーポン</span>
+            <p class="coupon_name" v-text="bestUserCoupon.coupon_name"></p>
+            <div class="coupon_detail">
+              <a href="https://www.dlsite.com/bl-pro/mypage/coupon/list">利用条件の確認はこちら</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="work_buy_btn">
+      <!-- ダウンロード -->
+      <template v-if=" ! product.is_sale && is_comingsoon && !is_check">
+        <div class="pre_work_message">
+          <span class="title">販売開始予定</span>
+          <span class="date">12月11日 0時</span>
+          <span class="note">※状況により販売延期される<br>場合もあります</span>
+        </div>
+      </template>
+      <template v-else-if=" ! product.is_sale && product.on_sale && ! is_check">
+        <p class="work_sales_end">販売終了しました</p>
+      </template>
+      <template v-else>
+        <template v-if="is_bought">
+          
+                    
+          <p class="work_stream"><a rel="noopener" href="https://play.dlsite.com/?workno=BJ222351" class="btn_st" :class="{ disabled: ! product.dlsiteplay_work || product.dl_format == 16 }" title="ブラウザ視聴" target="_blank">ブラウザ視聴</a></p>
+          <p v-if="product.dl_format !== 20 && product.dl_format !== 21" class="work_cart">
+            <a :href="product.down_url" class="btn_dl" :class="{ disabled: product.dl_format == 17 }">ダウンロード</a>
+          </p>
+          
+                    
+        </template>
+        <template v-else-if="is_already">
+          <p class="work_already">既に持っています</p>
+        </template>
+
+        <template v-if="rentaled">
+          <p class="work_cart"><a href="https://www.dlsite.com/bl-pro/download/rental/=/product_id/BJ222351.html" class="btn_dl">ダウンロード</a></p>
+        </template>
+
+        <transition name="popup" mode="out-in">
+        <p v-if="product.is_rental && ! rentaled && ((product.work_rentals || []).length + ( ! is_bought && product.on_sale ? 1 : 0) > 1) && carted" class="message_cart_in" :key="carted.rental_id"><span>{{ carted.name }}</span>追加済み</p>
+        </transition>
+
+        <template v-if="is_check">
+          <p class="work_cart">
+            <a class="btn_cart" v-t="'cart.add_cart'"><!-- カートに入れる --></a>
+          </p>
+        </template>
+        <template v-else-if="buy_type == 'rental' || ! is_bought && ! rentaled && ! product.on_sale">
+          <p v-if="carted && carted.rental_id == rental.id" class="work_cart">
+            <a :href="makeUrl('/cart', { rental_id: rental_id, product_id: product.product_id })" class="btn_cart_in" v-t="'cart.in_cart'"><!-- カートに入っています--></a>
+          </p>
+          <p v-else class="work_cart">
+            <a @click.prevent="addCart({ product_id:product.product_id, rental_id: rental.id }); showCartPopup()" :href="makeUrl('/cart', { rental_id: rental_id, product_id: product.product_id })" class="btn_cart" v-t="'cart.add_cart'"><!-- カートに入れる --></a>
+          </p>
+        </template>
+        <template v-else-if=" ! is_bought && product.on_sale">
+          <p v-if="product.is_sold_out" class="work_cart">
+            <a href="#" class="btn_cart disabled" v-t="'product.item.sold_out'"></a>
+          </p>
+          <p v-else-if="carted && ! carted.rental_id" class="work_cart">
+            
+                          <a :href="makeUrl('/cart', { product_id: product.product_id })" class="btn_cart_in" v-t="'cart.in_cart'"><!-- カートに入っています --></a>
+                      
+          </p>
+          <template v-else>
+          
+                          
+              <p class="work_cart" v-if="!isAccountLogin">
+                <a href="https://www.dlsite.com/bl-pro/pay/member/=/relayout/cart/buynow/1/product_id/BJ222351.html" class="btn_buy">会員登録して購入</a>
+              </p>
+              <p class="work_cart">
+                <a @click.prevent="addCart({ product_id:product.product_id }); showCartPopup()" :href="makeUrl('/cart', { product_id: product.product_id })" class="btn_cart" v-t="'cart.add_cart'"><!-- カートに入れる --></a>
+              </p>
+              <p class="work_cart" v-if="isAccountLogin">
+                <a href="https://www.dlsite.com/bl-pro/pay/member/=/relayout/cart/buynow/1/product_id/BJ222351.html" class="btn_buy">すぐに購入</a>
+              </p>
+              
+                      
+          </template>
+        </template>
+
+        <!-- お気に入り -->
+        <p v-if="is_check" class="work_favorite"><a class="btn_favorite" v-t="favorite.add_fav"><!-- お気に入りに追加 --></a></p>
+        <p v-else-if="product.is_sold_out" class="work_favorite"><a href="#" class="btn_favorite disabled" v-t="'favorite.add_fav'"><!-- お気に入りに追加 --></a></p>
+        <p v-else-if="! user.customer_id && ! is_favorite" class="work_favorite"><a :href="link.favorite" class="btn_favorite" :class="{ btn_favorite_in: is_favorite }">{{ is_favorite ? $t('favorite.in_fav') : $t('favorite.add_fav') }}</a></p>
+        <p v-else-if="user.customer_id && ! is_favorite" class="work_favorite"><a @click.prevent="addFavorite({ product_id:product.product_id })" href="https://www.dlsite.com/bl-pro/mypage/wishlist/=/product_id/BJ222351.html" class="btn_favorite" :class="{ btn_favorite_in: is_favorite }">{{ is_favorite ? $t('favorite.in_fav') : $t('favorite.add_fav') }}</a></p>
+        <p v-else class="work_favorite"><a href="https://www.dlsite.com/bl-pro/mypage/wishlist/=/product_id/BJ222351.html" class="btn_favorite" :class="{ btn_favorite_in: is_favorite }">{{ is_favorite ? $t('favorite.in_fav') : $t('favorite.add_fav') }}</a></p>
+
+        <!-- 購入済み作品の場合、作品評価ページへのリンクを表示する -->
+        <template v-if="is_bought" v-cloak>
+          <div v-if="is_myrated" class="work_rating" v-cloak><a href="https://www.dlsite.com/bl-pro/mypage/short-review" class="btn_rating_in">作品評価済み</a></div>
+          <div v-else class="work_rating" v-cloak><a href="https://www.dlsite.com/bl-pro/mypage/short-review" class="btn_rating">作品を評価する</a></div>
+        </template>
+
+        
+        <!-- 多言語の場合、ポイント購入へのリンクを表示する -->
+                
+
+        <!-- カートボタン押下時にレコメンドのモーダル表示 -->
+        <div v-show="this.$store.state.is_carted" class="add_cart_overlay" @click.stop.prevent="function(){ closeRecommend(); $(document.body).removeClass('scrolling_stop'); }">
+          <div class="add_cart_modal" @click.stop>
+            <span class="add_cart_close" @click.stop.prevent="function(){ closeRecommend(); $(document.body).removeClass('scrolling_stop'); }"></span>
+            <div class="add_cart_btn_inner">
+              <p class="add_cart_note">作品をカートに追加しました</p>
+              <a v-if="user.customer_id" :href="makeUrl('/cart', { product_id: product.product_id })" v-t="'cart.go_buy'" class="add_cart_btn"><!-- 購入手続きへ --></a>
+              <a v-else :href="makeUrl('/cart', { product_id: product.product_id })" v-t="'cart.go_cart'" class="add_cart_btn"><!-- カートを見る --></a>
+            </div>
+            <cart_recommend v-bind:on_display="this.$store.state.is_carted" :product_id="product_id"></cart_recommend>
+          </div>
+        </div>
+        <!-- /カートボタン押下時にレコメンドのモーダル表示 -->
+      </template>
+
+    </div>
+    
+  </div>
+  <div v-else-if="product.price === undefined" class="work_buy_main">
+    <!-- IE8 or noscript -->
+    <div id="work_price">
+      <div class="work_buy_type">
+        <div class="work_buy_container">
+          <div class="work_buy_body">
+            <div class="work_buy_label">価格</div>
+            <div class="work_buy_content"><span class="price">660<i>円</i></span></div>
+          </div>
+                    <div class="work_buy_body">
+            <div class="work_buy_label">ポイント</div>
+            <div class="work_buy_content">
+              <strong class="work_point">
+                18<i>pt (3%還元)</i>
+              </strong>
+            </div>
+          </div>
+                  </div>
+      </div>
+    </div>
+    <div id="work_buy_btn">
+              <p class="work_cart _work_cart" id="_work_cart_BJ222351"><a href="https://www.dlsite.com/bl-pro/cart/=/product_id/BJ222351.html" class="btn_cart _btn_cart" id="_btn_cart_BJ222351">カートに入れる</a></p>
+        <p class="work_favorite _work_favorite" id="_work_favorite_BJ222351"><a href="https://www.dlsite.com/bl-pro/mypage/wishlist/=/product_id/BJ222351.html" class="btn_favorite _btn_favorite" id="_btn_favorite_BJ222351">お気に入りに追加</a></p>
+          </div>
+  </div>
+
+    <div v-if="product.is_sale && ! is_bought && ! product.is_sold_out && (product.on_sale || product.is_rental)" v-cloak class="floating_cart_box" :class="class_floating_cart_box">
+    <div class="cart_box_header" @click.prevent="toggleDisplayFloat">{{$t('cart.buy_this')}}<div class="hide" v-t="'cart.hide'"></div></div>
+    <div class="cart_box_body">
+      <div class="cart_box_body_inner">
+        <div class="work_info_wrap">
+          <div class="work_thumb">
+            <img src="//img.dlsite.jp/resize/images2/work/books/BJ223000/BJ222351_img_main_240x240.jpg" alt="コミックマズル　クズの教育 [Reader Store / コミックマズル]" class="target_type">
+          </div>
+          
+          <div class="work_buy_body_wrap">
+            <div class="work_buy_body">
+              <div class="work_buy_label" v-t="'product.price.price'"><!-- 価格 --></div>
+              <div class="work_buy_content">
+                <strong class="price">{{ real_price | number_format }}<i v-t="'product.price.yen'"></i></strong>
+              </div>
+            </div>
+            <div v-if="product.product_point || product.default_point" class="work_buy_body">
+              <div class="work_buy_label" v-t="'product.price.point'"><!-- ポイント --></div>
+              <div class="work_buy_content">
+                <strong class="work_point">{{ (product.product_point || product.default_point) | number_format }}<i>pt</i></strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn_wrap">
+          <div class="btn_wrap_inner">
+          <template v-if="buy_type == 'rental' || ! is_bought && ! rentaled && ! product.on_sale">
+            <p v-if="carted && carted.rental_id == rental.id" class="work_cart">
+              <a :href="'https://www.dlsite.com/bl-pro/cart/=/rental_id/_rental_/product_id/BJ222351.html'.replace('_rental_', rental_id)" class="btn_cart_in" v-t="'product.item.into_cart_result'"></a>
+            </p>
+            <p v-else class="work_cart">
+              <a @click.prevent="addCart({ product_id:product.product_id, rental_id: rental.id }); showCartPopup()" :href="'https://www.dlsite.com/bl-pro/cart/=/rental_id/_rental_/product_id/BJ222351.html'.replace('_rental_', rental_id)" class="btn_cart" data-link-name="float" v-t="'product.item.into_cart'"></a>
+            </p>
+          </template>
+
+          <template v-else-if=" ! is_bought && product.on_sale">
+          
+            <p v-if="carted && ! carted.rental_id" class="work_cart">
+              <a href="https://www.dlsite.com/bl-pro/cart/=/product_id/BJ222351.html" class="btn_cart_in" v-t="'cart.in_cart_s'"><!-- カートに追加済み --></a>
+            </p>
+            <template v-else>
+              <p class="work_cart" v-if="!isAccountLogin">
+                <a href="https://www.dlsite.com/bl-pro/pay/member/=/relayout/cart/buynow/1/product_id/BJ222351.html" class="btn_buy">会員登録して購入</a>
+              </p>
+              <p class="work_cart">
+                <a @click.prevent="addCart({ product_id:product.product_id }); showCartPopup()" href="https://www.dlsite.com/bl-pro/cart/=/product_id/BJ222351.html" class="btn_cart" data-link-name="float" v-t="'cart.add_cart_s'"><!-- カートに追加 --></a>
+              </p>
+              <p class="work_cart" v-if="isAccountLogin">
+                <a href="https://www.dlsite.com/bl-pro/pay/member/=/relayout/cart/buynow/1/product_id/BJ222351.html" class="btn_buy">すぐに購入</a>
+              </p>
+            </template>
+          
+          </template>
+
+          <p v-if="user.customer_id && ! is_favorite" class="work_favorite">
+            <a @click.prevent="addFavorite({ product_id:product.product_id })" href="https://www.dlsite.com/bl-pro/mypage/wishlist/=/product_id/BJ222351.html" class="btn_favorite" v-t="'favorite.add_fav'"><!-- お気に入りに追加 --></a>
+          </p>
+          <p v-else class="work_favorite">
+            <a href="https://www.dlsite.com/bl-pro/mypage/wishlist/=/product_id/BJ222351.html" :class="{ btn_favorite_in: is_favorite, btn_favorite: !is_favorite }" data-link-name="float">{{ is_favorite ? $t('favorite.in_fav') : $t('favorite.add_fav') }}</a>
+          </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+    <coupon-obtain
+    link-coupons="https://www.dlsite.com/bl-pro/coupon/=/ajax/1/product_id/BJ222351.html"
+    link-obtain="https://www.dlsite.com/bl-pro/get/coupon/=/ajax/1/code/"
+  >
+  </coupon-obtain>
+
+    
+  <div class="work_privilege_guide" v-if="gift && gift.title || coupons.length || bonuses.length" v-cloak>
+    <p class="separate_title"><span>購入特典</span></p>
+    
+    <div class="work_privilege_guide_inner">
+      <ul>
+        <li v-if="gift && gift.title">
+          <p class="label bonus_code">{{ gift.title }}</p>
+          <p v-if="gift.distribute_end_str" class="distribution_period">
+          
+                        {{ gift.distribute_end_str }}まで配布中          
+          </p>
+          <p class="body" v-html="gift.description"></p>
+        </li>
+        <li v-for="coupon in coupons">
+          <p class="label coupon" :class="{ type_work: coupon.issue.product_id, type_maker: coupon.issue.maker_id, type_price: ! coupon.issue.product_id && ! coupon.issue.maker_id }">{{ coupon.coupon_name }}</p>
+          <p v-if="coupon.end_date_str" class="distribution_period" :class="{ type_work: coupon.issue.product_id, type_maker: coupon.issue.maker_id, type_price: ! coupon.issue.product_id && ! coupon.issue.maker_id }">{{ coupon.end_date_str }}まで配布中</p>
+          <p class="body" v-html="coupon.info"></p>
+          <p v-if="coupon.user_limit_date" class="period"><span>有効期限：</span>{{ coupon.user_limit_date }}</p>
+          <p v-else-if="coupon.limit_days_day" class="period">
+          
+                        <span>有効期限：</span>取得から{{ coupon.limit_days_day }}日後          
+          </p>
+        </li>
+        <li v-for="bonus in bonuses">
+          <p class="label limited_benefit">{{ bonus.title }}</p>
+          <p v-if="bonus.end_date_str" class="distribution_period type_work">
+          
+                        {{ bonus.end_date_str }}まで配布中          
+          </p>
+          <p class="body" v-html="bonus.description"></p>
+        </li>
+      </ul>
+    </div>
+    
+    <p v-if="product.is_rental" class="guide_message">レンタルでは購入特典は<br>付与されません。</p>
+  </div>
+
+  <div id="work_device_guide">
+    <p class="separate_title"><span>閲覧可能な環境</span></p>
+    <div class="system_requirements">
+    <ul class="sysreq_list">
+      <li class="sysreq_list_item type_pc"><i>PC</i></li>
+      <li class="sysreq_list_item type_ios"><i>iOS</i></li>
+      <li class="sysreq_list_item type_android"><i>Android</i></li>
+    </ul>
+  </div>
+    
+    
+  <div class="os_popup" :class="{ active: is_display_machine_list }">
+    <div class="os_popup_header">対応OS</div>
+    <div class="os_popup_body">
+      <table>
+        <tbody>
+          <tr>
+            <td>Windows</td>
+            <td>                                                                          7 / 8.1 / 10                            </td>
+          </tr>
+                      <td>iOS</td>
+            <td>iOS 5.1以上</td>
+          </tr>
+          <tr>
+            <td>Android</td>
+            <td>Android2.2以上</td>
+          </tr>
+          <tr>
+            <td>その他</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  
+
+  <div class="work_buy_guide type_affiliate" v-if="!is_comingsoon && !product.affiliate_deny" v-cloak>
+    <ul class="guide_list">
+      <li>
+        <a href="https://www.dlsite.com/bl-pro/circle/affiliate/link/work/=/product_id/BJ222351.html" v-if="isCircleLogin">アフィリエイトリンク作成</a>
+        <a href="https://www.dlsite.com/bl-pro/user/affiliate/link/work/=/product_id/BJ222351.html" v-else>アフィリエイトリンク作成</a>
+      </li>
+    </ul>
+  </div>
+</div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </div>
+      <!-- /right -->
+
+            
+      
+      
+      
+      <!-- footer -->
+      <div id="footer" data-section_name="footer">
+        
+        <div class="pagetop_block">
+    <p class="pagetop"><a href="#header">PAGE TOP</a></p>
+</div>
+<div class="footer_floor_nav">
+<ul class="floor_list">
+<li class="floor_list_item"><a href="https://www.dlsite.com">総合トップ</a></li>
+<li class="floor_list_item"><a href="https://www.dlsite.com/bl/">同人</a></li>
+<li class="floor_list_item"><a href="https://www.dlsite.com/bl-pro/">コミック</a></li>
+<li class="floor_list_item"><a href="https://www.dlsite.com/bl-drama/">ドラマCD</a></li>
+<li class="floor_list_item"><a href="https://www.dlsite.com/bl-pro/girlsgame">PCゲーム</a></li>
+<li class="floor_list_item sp_switch"><a id="_touch_link" href="https://www.dlsite.com/bl-pro-touch/work/=/product_id/BJ222351.html" data-platform="touch">スマホ版DLsiteへ</a></li>
+</ul>
+</div>
+
+    <div class="footer_section">
+    <div class="footer_section_inner">
+        <div class="link_list_wrap">
+            <div class="link_list_box col_2">
+                <div class="label">DLsiteについて</div>
+                <ul class="link_list">
+                    <li class="link_list_item"><a rel="noopener" href="https://www.eisys.co.jp/company/information" target="_blank">会社概要</a></li>
+                                        <li class="link_list_item"><a rel="noopener" href="https://hrmos.co/pages/eisys/jobs" target="_blank">採用情報</a></li>
+                                        <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/user/regulations">利用規約</a></li>
+                    <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/guide/law">特定商取引法に基づく表示</a></li>
+                    <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/guide/settlement">資金決済法に基づく表記</a></li>
+                    <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/guide/privacy">個人情報の取扱いについて</a></li>
+                    <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/mosaic">コンプライアンスポリシー</a></li>
+                    <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/guide/copy">著作権</a></li>
+                                        <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/banners">リンクについて</a></li>
+                    <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/sitemap">サイトマップ</a></li>
+                                    </ul>
+            </div>
+            <div class="link_list_box">
+                <div class="label">ヘルプ&amp;ガイド</div>
+                <ul class="link_list">
+                                        <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/welcome">初めての方へ</a></li>
+                                        <li class="link_list_item"><a rel="noopener" href="https://www.dlsite.com/bl-pro/faq/=/type/user" target="_blank">よくある質問</a></li>
+                                        <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/opinion/contribution">作品リクエスト</a></li>
+                                    </ul>
+            </div>
+            <div class="link_list_box">
+                <div class="label">DLsiteのサービス</div>
+                <ul class="link_list">
+                                        <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/circle/invite">作品を販売したい方へ</a></li>
+                                                            <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/sell/steam">Steamパブリッシャーサービス</a></li>
+                    <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/guide/affiliate">アフィリエイト</a></li>
+                                        <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/mypage/setting/mail">メールマガジン</a></li>
+                                        <li class="link_list_item"><a rel="noopener" href="https://www.dlsite.com/event-pub/top.html" target="_blank">広告出稿サービス</a></li>
+                    <li class="link_list_item"><a rel="noopener" href="https://play.dlsite.com/ja" target="_blank">Webビューア DLsite Play</a></li>
+                    <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/guide/dlnest">PCクライアント DLsite Nest</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer_section_inner payment">
+      <div class="label">お支払い&amp;ポイント</div>
+      <div class="footer_payment_box">
+        <ul class="link_list">
+          <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/guide/creditcard">お支払い方法</a></li>
+                                <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/mypage/aboutpoint">ポイントについて</a></li>
+                    <li class="link_list_item"><a href="https://www.dlsite.com/bl-pro/guide/payment#link_point">ポイント購入方法</a></li>
+        </ul>
+        <a href="https://www.dlsite.com/bl-pro/guide/creditcard" class="footer_payment_img">
+                      <img src="/modpub/images/web/common/payment_wide.jpg" alt="多彩な決済方法">
+                  </a>
+      </div>
+    </div>
+            <div class="footer_section_inner sns">
+              <div class="label">Twitter公式アカウント</div>
+        <ul class="footer_sns">
+          <li class="footer_sns_item"><a rel="noopener" href="https://twitter.com/DLsite" target="_blank" class="twitter_g">全年齢</a></li>
+          <li class="footer_sns_item"><a rel="noopener" href="https://twitter.com/DLsiteManiax" target="_blank" class="twitter_r18">R18</a></li>
+          <li class="footer_sns_item"><a rel="noopener" href="https://twitter.com/GirlsManiax" target="_blank" class="twitter_bl">BL</a></li>
+          <li class="footer_sns_item"><a rel="noopener" href="https://twitter.com/girlsmaniax_OTM" target="_blank" class="twitter_otm">乙女</a></li>
+          <li class="footer_sns_item"><a rel="noopener" href="https://twitter.com/DLsiteC" target="_blank" class="twitter_comic">Comic</a></li>
+          <li class="footer_sns_item"><a rel="noopener" href="https://twitter.com/DLsiteR18" target="_blank" class="twitter_comic_r18">Comic R18</a></li>
+          <li class="footer_sns_item"><a rel="noopener" href="https://twitter.com/DLsiteEnglish" target="_blank" class="twitter_eng">English</a></li>
+          <li class="footer_sns_item"><a rel="noopener" href="https://twitter.com/DLsite_info" target="_blank" class="twitter_info">広報</a></li>
+        </ul>
+        <div class="label">Youtube公式アカウント</div>
+        <ul class="footer_sns">
+          <li class="footer_sns_item"><a rel="noopener" href="https://www.youtube.com/channel/UCQEN3LsNnqottC2mXx3tAjA" target="_blank" class="youtube_info">広報</a></li>
+        </ul>
+            <!-- 日本語以外で共通で出すアイコン群 -->
+          </div>
+        <div class="footer_section_inner recruit">
+      <div class="label">採用情報</div>
+      <ul class="job_list">
+          <li class="job_list_item new">
+              <a rel="noopener" href="https://hrmos.co/pages/eisys/jobs/0000205" target="_blank">
+                  <div class="job_icon recruit_01">
+                      <img src="/modpub/images/web/common/recruit/icon_recruit_02.png" loading="lazy">
+                  </div>
+                  <div class="job_info">
+                      <p class="job_name">マンガ制作アシスタント（アルバイト）</p>
+                      <span class="addition">エイシスサービス全般</span>
+                  </div>
+              </a>
+          </li>
+          <li class="job_list_item new">
+              <a rel="noopener" href="https://hrmos.co/pages/eisys/jobs/0000191" target="_blank">
+                  <div class="job_icon recruit_02">
+                    <img src="/modpub/images/web/common/recruit/icon_recruit_03.png" loading="lazy">
+                  </div>
+                  <div class="job_info">
+                      <p class="job_name">WEBエンジニア</p>
+                      <span class="addition">エイシスサービス全般</span>
+                  </div>
+              </a>
+          </li>
+          <li class="job_list_item new">
+              <a rel="noopener" href="https://hrmos.co/pages/eisys/jobs/0BBL001" target="_blank">
+                  <div class="job_icon recruit_03">
+                    <img src="/modpub/images/web/common/recruit/icon_recruit_08.png" loading="lazy">
+                  </div>
+                  <div class="job_info">
+                      <p class="job_name">クリエイターサポートスタッフ(アルバイト)</p>
+                      <span class="addition">エイシスサービス全般</span>
+                  </div>
+              </a>
+          </li>
+          <li class="job_list_item new">
+              <a rel="noopener" href="https://hrmos.co/pages/eisys/jobs/0CLI003" target="_blank">
+                  <div class="job_icon recruit_04">
+                      <img src="/modpub/images/web/common/recruit/icon_recruit_02.png" loading="lazy">
+                  </div>
+                  <div class="job_info">
+                      <p class="job_name">デジタルコミックデータ登録(アルバイト)</p>
+                      <span class="addition">エイシスサービス全般</span>
+                  </div>
+              </a>
+          </li>
+      </ul>
+      <a rel="noopener" href="https://hrmos.co/pages/eisys/jobs?staff_pc_n" class="recruit_more" target="_blank">採用サイトへ</a>
+    </div>
+  <div id="copyright">
+    <div class="container clearfix">
+        <div id="system">推奨環境：最新版のMicrosoft Edge、Safari、Chrome、Firefox（JavaScript・Cookieを許可）</div>
+        <p>&copy; 1996 DLsite</p>
+    </div>
+</div>
+
+<div data-vue-component="thumb-img-popup-in-swiper"></div>
+      </div>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+        <!-- script_footer -->
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "DLsite",
+  "alternateName": "DLsite",
+  "url": "https://www.dlsite.com/"
+}
+</script>
+
+
+<div data-vue-component="cookie-policy" data-async="true"></div>
+
+<script type="text/javascript" src="/vue/js/pc/vendor.js?cdn_cache=1&v=0.1.2&_=1631681407"></script>
+<script type="text/javascript" src="/vue/js/pc/app.js?cdn_cache=1&v=0.1.2&_=1635996724"></script>
+
+
+<script type="text/javascript">
+(function(document, undefined) {
+  "use strict";
+  var $script = document.createElement('script');
+  $script.src = document.location.protocol + '//banner.eisys-bcs.jp/js/bcs.min.js';
+  document.body.appendChild($script);
+
+  $(window).bind('guestbannerDelete', function(){
+    var $guest_banner = $('.bcs_viewer').find('.__guest');
+    if ($.cookie('loginchecked') >= 1 && $guest_banner.length > 0 ) {
+      $guest_banner.remove();
+    }
+  });
+
+  // フッターリンクQRコードのモーダル
+  // 開き
+  $('.qr-modal-open-link').bind('click', function(e) {
+    e.preventDefault();
+    var targetModal = $(this).attr('data-modal-open');
+    $('[data-modal-type =' + targetModal + ']').addClass('is-show');
+  })
+  // 閉じ（ボタン）
+  $('.global_modal_content_close').bind('click', function(e) {
+    $('[data-modal-type]').removeClass('is-show');
+  })
+  // 閉じ（オーバーレイ）
+  $('.global_modal_overlay.type_qr').bind('click', function(e) {
+    $('[data-modal-type]').removeClass('is-show');
+  })
+  $('.global_modal_content.type_qr').bind('click', function(e) {
+    e.stopPropagation();
+  })
+})(document);
+</script>
+
+
+
+<style>
+div.measure_tag {
+  height: 0 !important;
+  width: 0 !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+  margin-top: -10000px;
+  margin-left: -10000px;
+  float: left;
+}
+</style>
+
+<div class="measure_tag"></div>
+    <!-- /script_footer -->
+        <script type="text/javascript">var contents = {"impression":[],"detail":[{"id":"BJ222351","name":"\u30b3\u30df\u30c3\u30af\u30de\u30ba\u30eb\u3000\u30af\u30ba\u306e\u6559\u80b2","category":"blpro","brand":"BG01505","price":600,"regist_date":"2019\/12\/11","image_main":"\/\/img.dlsite.jp\/modpub\/images2\/work\/books\/BJ223000\/BJ222351_img_main.jpg","official_price":"","series_id":"TITLE00055091","series_name":"\u30af\u30ba\u306e\u6559\u80b2","title_id":"TITLE00055091","title_name":"\u30af\u30ba\u306e\u6559\u80b2"}],"time":0.0008170604705810547};</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"NRJS-26fb73475871c01d5bd","applicationID":"781370968","transactionName":"YwQBYkdWDRZQVxUKDlpONkRcGAoLVVEZTRFcEQ==","queueTime":0,"applicationTime":187,"atts":"T0MCFA9MHhg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+
+</html>

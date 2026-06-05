@@ -1,0 +1,165 @@
+# summaly Fastify モードの設定例 (phase16.3 整理版)。
+# 運用時は `cp config.example.toml config.toml` で複製して値を調整する。
+# `pnpm serve [config.toml]` で読み込まれる。
+#
+# **基本方針** (phase16.3 + phase16.4):
+# - 各機能は `enabled = true/false` で有効化を明示する (デフォルト値で動かしたいなら enabled だけ書けば OK)
+# - 旧バージョンとの互換性は維持しない。未知キーは起動失敗 (DEPRECATED.md 参照)
+# - 経路依存 fail-fast: `[scraping.strategy_cache]` の bootstrap が proxy/curl_cffi 経路を要求する場合、
+#   該当セクションが `enabled = true` でないと起動失敗する (黙って動かない状態を防ぐ)
+# - **起動時 healthcheck (phase16.4)**: 各機能の `enabled = true` 時、`url` / `secret` /
+#   `projectDir` / `uvPath` が placeholder のままだったり、uv が PATH に無い等を起動時に検出して
+#   fail-fast。本ファイルでは「enabled = true 時に必須な項目」を placeholder 値のまま (コメント無し)
+#   で書いてあるので、`enabled = true` にして起動 → 具体的なエラーで何を埋めるべきか分かる UX。
+#
+# 環境変数との関係:
+#   - `SUMMALY_CONFIG_PATH`           : ファイルパスを上書き (CLI 引数 > env > "./config.toml")
+#   - `SUMMALY_ALLOW_PRIVATE_IP=true` : プライベート IP 許可 (テスト用、TOML には対応キーなし)
+#   - `SUMMALY_FAMILY=4` / `=6`        : IP family 強制
+#   - `SUMMALY_ENABLE_PDF=true`        : PDF 有効化 ([summaly.pdf].enabled を明示すれば TOML が優先)
+#   - `SUMMALY_PROXY_SECRET`           : proxy 経路の HMAC シークレット (TOML 直書きより推奨)
+
+[server]
+# Fastify の bind 設定。SSRF を防ぐためデフォルトはループバックに留める。
+# nginx などの前段プロキシから受ける運用では 127.0.0.1 のままで OK。
+host = "127.0.0.1"
+port = 3000
+
+[summaly]
+# 共通 SummalyOptions (リクエスト個別の挙動)。
+# 全項目デフォルト値があるので、必要な値だけ override する。
+# userAgent = "SummalyBot/5.4"           # 省略すると `SummalyBot/<version>` が使われる
+# responseTimeout = 20000                # ミリ秒。フェーズごと (DNS解決・接続・レスポンス各々)
+# operationTimeout = 60000               # ミリ秒。リクエスト全体
+# contentLengthLimit = 10485760          # 10 MiB。受信前 + 受信中の両方で監視
+# contentLengthRequired = false          # true で Content-Length 未指定のレスポンスを拒否
+# useRange = true                        # phase16.3 で internal default を true に変更。明示 false で off
+
+[summaly.cache]
+# Cache-Control ヘッダ + プロセス内 LRU + in-flight dedup。
+# Misskey の Got/node-fetch は Cache-Control を解釈しないので summaly 側で持つのが事実上必須。
+# maxAge = 604800                          # 成功レスポンスの max-age (秒)。デフォルト 1 週間
+# errorMaxAge = 3600                     # エラーレスポンスの max-age (秒、デフォルト 1 時間)
+# inMemory = true                          # プロセス内 LRU キャッシュを有効化
+# inMemoryMaxEntries = 1000              # LRU の最大エントリ数 (1 エントリ数 KB 想定)
+# inFlightDedup = true                     # 同一 URL の並列リクエストを 1 本化 (thundering herd 緩和)
+
+[summaly.pdf]
+# PDF レスポンスのタイトル取得 (オプトイン)。値を明示すれば env SUMMALY_ENABLE_PDF より優先される。
+enabled = false
+
+[scraping.strategy_cache]
+# 経路学習キャッシュ (phase14)。host + path prefix 単位で「成功した取得経路」(default / fallback_ua /
+# proxy / curl_cffi) を学習し、JSONL で永続化する。bootstrap (`data/domain-strategy-bootstrap.jsonl`、
+# yodobashi → curl_cffi、sqex → proxy 等) を npm 同梱しているので、新規環境でも初日から最適経路で動く。
+#
+# **経路依存 fail-fast (phase16.3)**: bootstrap に proxy / curl_cffi 経路 entry がある状態で対応する
+# 経路 (`[scraping.proxy]` / `[scraping.curl_cffi]`) が `enabled = false` だと **起動失敗** する。
+# 黙って動かない状態を防ぐため、bootstrap と enabled は整合させる必要がある。
+#
+# 初期状態は `enabled = false` (proxy / curl_cffi が未セットアップだから)。
+# proxy + curl_cffi の両方を `enabled = true` にしてから本セクションも `enabled = true` に切り替える。
+enabled = false
+# runtimePath = "/var/cache/summaly/domain-strategy.jsonl" # 学習結果の永続化先。省略時は in-memory のみ
+
+[scraping.proxy]
+# Cloudflare Workers Free にデプロイした outbound proxy 経由のフォールバック (phase12.1)。
+# Vultr Tokyo IP からの amazon.co.jp / sqex 等が IP レピュテーション層で 500 になる問題を救援する。
+# 発火対象 host はコード側で bootstrap.jsonl から自動導出される (`domains` 設定は不要)。
+#
+# **シークレット**: `secret` を TOML 直書きせず env `SUMMALY_PROXY_SECRET` 経由が推奨。
+#
+# **運用ガイド** (`enabled = true` にする前に):
+# 1. CF Workers をデプロイして `url` を埋める (tools/cf-proxy-worker/README.md 参照)
+# 2. env `SUMMALY_PROXY_SECRET` を設定
+enabled = false
+url = "https://summaly-proxy.<your>.workers.dev"
+secret = "..."                          # 推奨: env SUMMALY_PROXY_SECRET 経由
+
+[scraping.curl_cffi]
+# curl_cffi (libcurl-impersonate) を使った TLS layer bot block 救援フォールバック (phase12.5)。
+# proxy fallback でも救えない TLS フィンガープリント切断 (yodobashi 級の HTTP/2 INTERNAL_ERROR /
+# 即時切断) に対し、`tools/curl-cffi-fetcher/` の Python CLI を spawn して
+# Chrome / Firefox / Safari の TLS フィンガープリントを偽装してリトライする。
+# 発火対象 host はコード側で bootstrap.jsonl から自動導出される (`domains` 設定は不要)。
+#
+# **運用要件**: production server に `uv` (Python パッケージマネージャ) を別途インストールし、
+# `cd tools/curl-cffi-fetcher && uv sync` で依存解決しておく必要がある。
+enabled = false
+projectDir = "/path/to/summaly/tools/curl-cffi-fetcher"   # 絶対パス推奨
+uvPath = "/root/.local/bin/uv"                            # summaly実行ユーザー PATH 上に `uv` があればコメントアウトしてOK。 systemd で実行するならフルパス推奨
+# impersonate = "chrome120"                                  # `firefox120` / `safari17_0` 等も可
+
+[scraping.fallback]
+# Bot block 検出時に別 UA で経路として並列発火する (phase11.9 → phase18 で hedge race 対象経路に変更)。
+# `SummalyBot` 文字列を WAF が弾くサイト (`playing-games.com` 等) を救援する用途。
+# デフォルト UA は `Mozilla/5.0 (compatible; SummalyBot/<ver>; +<repo>)` 形式の複合 UA で、
+# Mozilla プレフィックス必須の WAF は通る。`SummalyBot` 文字列で弾くタイプは下記の fallback UA で並列発火。
+enabled = true
+# userAgent = "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
+# 省略時は `facebookexternalhit/1.1` がデフォルトで使われる (share link 発行用途として広く allowlist されている)。
+
+# phase18 hedged fallback: champion (経路学習キャッシュの第一候補、cache miss 時は default UA) が
+# このミリ秒以内に valid response を返さなければ、challenger (残り全 strategy) を並列発火する。
+# 0 にすると即時並列発火 (debug / explore 用)。enabled とは独立して機能する (常時有効)。
+# hedgedThresholdMs = 5000
+
+[plugins]
+# 利用許可するプラグイン名の配列。
+#   - 配列が無い / 省略  → 全プラグイン有効 (互換挙動)
+#   - 配列を指定        → オプトイン許可リスト (記載のないプラグインは無効)
+#   - 空配列 `[]`       → 組み込み全 disable (汎用 OG パスのみで動作)
+allowed = [
+  "amazon",
+  "bluesky",
+  "wikipedia",
+  "branchio-deeplinks",
+  "youtube",
+  "spotify",
+  "twitter",
+  "npmjs",
+  "nintendo-store",
+  "yodobashi",
+  "sqex",
+  "syosetu",
+  "kakuyomu",
+  "google-drive",
+  # nitori プラグインは fail mode J (datacenter IP 全般 block) で本番では救援不可。
+  # 家庭用 IP / 一般 ISP からの利用なら有効化する余地あり。Playwright 統合 (phase15.1) 完了後に再評価。
+  # "nitori",
+  # 性的コンテンツを含むサイトの組み込みプラグイン。除外したい場合はコメントアウトのまま:
+  # "dlsite",
+  # "iwara",
+  # "komiflo",
+  # "nijie",
+  # "dmm",
+]
+
+# プラグイン別の設定セクション (将来拡張用 placeholder)。
+# 現状は読まれないが、将来 options 受け渡し機構が実装されたタイミングで読み始める想定。
+# [plugins.komiflo]
+# preferredVariant = "346_mobile"
+
+[diagnostics]
+# パース失敗ドメインのログ蓄積 (プラグイン候補発見器、phase10.1)。
+# 「OG/Twitter Card/<title> のいずれも取れず汎用パスでスカスカになった URL」を host + パス先頭
+# 1〜2 セグメント単位で集約。「絶対失敗する類型」(StatusError 4xx/5xx, timeout 等) は自動除外。
+#
+# **phase16.3**: parseFailureLog = true で Path 未指定なら `./data/parse-failures.jsonl` /
+# `./data/parse-failures-blocked.jsonl` がデフォルト適用される。`.gitignore` で除外済み。
+# 片方だけ Path 指定するとペア違反で起動失敗 (両方明示 or 両方未指定のいずれか)。
+parseFailureLog = false
+# parseFailureLogJsonlPath = "/var/log/summaly/parse-failures.jsonl"           # 省略時はデフォルト適用
+# parseFailureLogBlockedJsonlPath = "/var/log/summaly/parse-failures-blocked.jsonl"
+
+[embed]
+# プレーヤー iframe として読まれる JS なし HTML+CSS を返すエンドポイント (phase13.1)。
+# 対応プラグイン (現状 syosetu / kakuyomu) で `renderEmbed` を実装したものが自動で対象になる。
+#
+# **phase16.3 変更**:
+# - publicUrl は `[server]` から `[embed]` に移動 (embed でしか使わないため)
+# - allowedPlugins は廃止。`[plugins].allowed` × `renderEmbed` 実装プラグインから自動構成される。
+#   embed 対応プラグインを部分的に除外したい場合は `[plugins].allowed` から外す
+enabled = false
+publicUrl = "https://summaly.example.com"   # https: 必須。embed 機能を使う場合は必須
+# frameAncestors = ["*"]                      # iframe を読み込んで良いオリジン (CSP frame-ancestors)。商用は明示制限推奨

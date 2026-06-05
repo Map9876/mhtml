@@ -1,0 +1,17 @@
+[submodule "tissue"]
+	path = tissue
+	url = https://github.com/shikorism/tissue.git
+
+[submodule "Komiflo-2025-manga-rank-toplist"]
+	path = Komiflo-2025-manga-rank-toplist
+	url = https://github.com/Map9876/Komiflo-2025-manga-rank-toplist.git
+
+[submodule "riin-summaly"] 	
+    path = riin-summaly
+ 	url = https://github.com/fruitriin/riin-summaly.git
+[submodule "dlsite-async"]
+	path = dlsite-async
+	url = https://github.com/bhrevol/dlsite-async.git
+[submodule "dlsite_api"]
+	path = dlsite_api
+	url = https://github.com/AsakuraMori/dlsite_api.git

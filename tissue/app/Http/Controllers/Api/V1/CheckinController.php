@@ -1,0 +1,164 @@
+<?php
+
+namespace App\Http\Controllers\Api\V1;
+
+use App\Ejaculation;
+use App\Events\LinkDiscovered;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\V1\CheckinStoreRequest;
+use App\Http\Resources\EjaculationResource;
+use App\Tag;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
+
+class CheckinController extends Controller
+{
+    public function store(CheckinStoreRequest $request)
+    {
+        $fromPublicApi = $request->routeIs('api.v1.checkins.*');
+        $inputs = $request->validated();
+
+        $ejaculatedDate = empty($inputs['checked_in_at']) ? now() : new Carbon($inputs['checked_in_at']);
+        $ejaculatedDate = $ejaculatedDate->setTimezone(date_default_timezone_get())->startOfMinute();
+        if (Ejaculation::where(['user_id' => Auth::id(), 'ejaculated_date' => $ejaculatedDate])->count()) {
+            throw new UnprocessableEntityHttpException('既にこの日時にチェックインしているため、登録できません');
+        }
+
+        $ejaculation = DB::transaction(function () use ($fromPublicApi, $inputs, $ejaculatedDate) {
+            $ejaculation = Ejaculation::create([
+                'user_id' => Auth::id(),
+                'ejaculated_date' => $ejaculatedDate,
+                'note' => $inputs['note'] ?? '',
+                'link' => $inputs['link'] ?? '',
+                'source' => $fromPublicApi ? Ejaculation::SOURCE_API : Ejaculation::SOURCE_WEB,
+                'is_private' => (bool)($inputs['is_private'] ?? false),
+                'is_too_sensitive' => (bool)($inputs['is_too_sensitive'] ?? false),
+                'discard_elapsed_time' => (bool)($inputs['discard_elapsed_time'] ?? false),
+                'oauth_access_token_id' => $fromPublicApi ? Auth::user()->token()->id : null,
+            ]);
+
+            $tagIds = [];
+            if (!empty($inputs['tags'])) {
+                foreach ($inputs['tags'] as $tag) {
+                    $tag = trim($tag);
+                    if ($tag === '') {
+                        continue;
+                    }
+
+                    $tag = Tag::firstOrCreate(['name' => $tag]);
+                    $tagIds[] = $tag->id;
+                }
+            }
+            $ejaculation->tags()->sync($tagIds);
+
+            return $ejaculation;
+        });
+
+        if (!empty($ejaculation->link)) {
+            event(new LinkDiscovered($ejaculation->link));
+        }
+
+        return new EjaculationResource($ejaculation);
+    }
+
+    public function show(string $checkin)
+    {
+        $ejaculation = $this->queryEjaculation($checkin)->firstOrFail();
+        $owner = $ejaculation->user;
+        if (!$owner->isMe()) {
+            if ($owner->is_protected) {
+                throw new AccessDeniedHttpException('このユーザはチェックイン履歴を公開していません');
+            }
+            if ($ejaculation->is_private) {
+                throw new AccessDeniedHttpException('非公開チェックインのため、表示できません');
+            }
+        }
+        $ejaculation->ensureInterval();
+
+        return new EjaculationResource($ejaculation);
+    }
+
+    public function update(CheckinStoreRequest $request, Ejaculation $checkin)
+    {
+        $inputs = $request->validated();
+
+        if (array_key_exists('checked_in_at', $inputs) && $inputs['checked_in_at'] !== null) {
+            $ejaculatedDate = new Carbon($inputs['checked_in_at']);
+            $ejaculatedDate = $ejaculatedDate->setTimezone(date_default_timezone_get())->startOfMinute();
+            if (Ejaculation::where(['user_id' => Auth::id(), 'ejaculated_date' => $ejaculatedDate])->where('id', '<>', $checkin->id)->count()) {
+                throw new UnprocessableEntityHttpException('既にこの日時にチェックインしているため、登録できません');
+            }
+
+            $checkin->ejaculated_date = $ejaculatedDate;
+        }
+        if (array_key_exists('note', $inputs)) {
+            $checkin->note = $inputs['note'] ?? '';
+        }
+        if (array_key_exists('link', $inputs)) {
+            $checkin->link = $inputs['link'] ?? '';
+        }
+        if (array_key_exists('is_private', $inputs)) {
+            $checkin->is_private = (bool)($inputs['is_private'] ?? false);
+        }
+        if (array_key_exists('is_too_sensitive', $inputs)) {
+            $checkin->is_too_sensitive = (bool)($inputs['is_too_sensitive'] ?? false);
+        }
+        if (array_key_exists('discard_elapsed_time', $inputs)) {
+            $checkin->discard_elapsed_time = (bool)($inputs['discard_elapsed_time'] ?? false);
+        }
+
+        DB::transaction(function () use ($inputs, $checkin) {
+            $checkin->save();
+
+            if (array_key_exists('tags', $inputs)) {
+                $tagIds = [];
+                if (!empty($inputs['tags'])) {
+                    foreach ($inputs['tags'] as $tag) {
+                        $tag = trim($tag);
+                        if ($tag === '') {
+                            continue;
+                        }
+
+                        $tag = Tag::firstOrCreate(['name' => $tag]);
+                        $tagIds[] = $tag->id;
+                    }
+                }
+                $checkin->tags()->sync($tagIds);
+            }
+        });
+
+        if (!empty($checkin->link)) {
+            event(new LinkDiscovered($checkin->link));
+        }
+
+        return new EjaculationResource($this->queryEjaculation($checkin->id)->firstOrFail());
+    }
+
+    public function destroy(string $checkin)
+    {
+        $ejaculation = Ejaculation::find($checkin);
+
+        if ($ejaculation !== null) {
+            $this->authorize('edit', $ejaculation);
+
+            DB::transaction(function () use ($ejaculation) {
+                $ejaculation->tags()->detach();
+                $ejaculation->delete();
+            });
+        }
+
+        return response()->noContent();
+    }
+
+    private function queryEjaculation(string $id)
+    {
+        return Ejaculation::query()
+            ->whereKey($id)
+            ->withLikes()
+            ->withMutedStatus();
+    }
+}

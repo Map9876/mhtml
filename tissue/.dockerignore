@@ -1,0 +1,6 @@
+.idea
+.git
+.gitignore
+.gitattributes
+node_modules
+vendor

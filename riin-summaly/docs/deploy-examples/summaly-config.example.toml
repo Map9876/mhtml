@@ -1,0 +1,88 @@
+# summaly Fastify モードの設定例 (deploy 向け、phase16.3 整理版)。
+# `pnpm serve /etc/summaly/config.toml` で読み込む想定。
+# 詳細は /config.example.toml またはリポジトリの docs/SETUP.md を参照。
+
+[server]
+host = "127.0.0.1"
+port = 3000
+
+[summaly]
+# 全項目デフォルト値があるので、必要な値だけ override する。
+# useRange は phase16.3 で internal default を true に変更済。
+
+[summaly.cache]
+maxAge = 604800
+inMemory = true
+inFlightDedup = true
+
+[summaly.pdf]
+enabled = false
+
+[scraping.strategy_cache]
+# 経路学習キャッシュ (phase14)。bootstrap (`data/domain-strategy-bootstrap.jsonl`、yodobashi → curl_cffi、
+# sqex → proxy 等) を npm 同梱しており、新規環境でも初日から最適経路で動く。
+# **経路依存 fail-fast (phase16.3)**: bootstrap 経路と対応セクションの enabled が不整合だと起動失敗。
+# proxy + curl_cffi の両方を有効化してから enabled = true に切り替える。
+enabled = false
+# runtimePath = "/var/cache/summaly/domain-strategy.jsonl"  # 学習結果の永続化先 (省略時 in-memory)
+
+[scraping.proxy]
+# CF Workers proxy 経由の救援 (phase12.1)。Amazon class IP block 用。
+# secret は env SUMMALY_PROXY_SECRET 経由で渡す (TOML 直書き避け)。
+# Worker のデプロイ手順は tools/cf-proxy-worker/README.md 参照。
+# 発火対象 host は bootstrap.jsonl から自動導出される (phase16.3、`domains` 設定不要)。
+enabled = false
+# url = "https://summaly-proxy.<your>.workers.dev"
+
+[scraping.curl_cffi]
+# curl_cffi (libcurl-impersonate) で TLS フィンガープリント偽装救援 (phase12.5、yodobashi 等)。
+# **運用要件**: production server に `uv` インストール + `cd tools/curl-cffi-fetcher && uv sync` 必須。
+# 発火対象 host は bootstrap.jsonl から自動導出される (phase16.3、`domains` 設定不要)。
+enabled = false
+# projectDir = "/path/to/summaly/tools/curl-cffi-fetcher"
+
+[scraping.fallback]
+# phase18 hedge race の fallback_ua 経路として並列発火する (旧 phase11.9 cascade を継承)。
+# 省略時 UA は `facebookexternalhit/1.1`。
+enabled = true
+# hedgedThresholdMs = 5000  # champion 単独猶予期間。経過したら challenger 並列発火 (default 5000ms)
+
+[plugins]
+allowed = [
+  "amazon",
+  "bluesky",
+  "wikipedia",
+  "branchio-deeplinks",
+  "youtube",
+  "spotify",
+  "twitter",
+  "npmjs",
+  "nintendo-store",
+  "yodobashi",
+  "sqex",
+  "syosetu",
+  "kakuyomu",
+  "google-drive",
+  # nitori プラグインは fail mode J (datacenter IP 全般 block) で本番では救援不可。
+  # 家庭用 IP / 一般 ISP からの利用なら有効化する余地あり。Playwright 統合 (phase15.1) 完了後に再評価。
+  # "nitori",
+  # 性的コンテンツを含むサイトの組み込みプラグイン。有効化したい場合のみコメントを外す:
+  # "dlsite",
+  # "iwara",
+  # "komiflo",
+  # "nijie",
+  # "dmm",
+]
+
+[diagnostics]
+# パース失敗ログ集約 (phase10.1)。phase16.3 で parseFailureLog = true なら Path 自動デフォルト適用。
+parseFailureLog = false
+# parseFailureLogJsonlPath = "/var/log/summaly/parse-failures.jsonl"
+# parseFailureLogBlockedJsonlPath = "/var/log/summaly/parse-failures-blocked.jsonl"
+
+[embed]
+# `/embed` エンドポイント (phase13.1)。renderEmbed 実装プラグイン (syosetu / kakuyomu) で
+# iframe HTML を返す。phase16.3 で publicUrl が embed 配下に移動、allowedPlugins は廃止。
+enabled = false
+# publicUrl = "https://summaly.example.com"   # https: 必須
+# frameAncestors = ["*"]                      # 商用運用は ["https://misskey.example.com"] 等で制限

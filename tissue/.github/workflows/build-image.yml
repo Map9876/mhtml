@@ -1,0 +1,108 @@
+name: Build container image
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+    tags:
+      - '**'
+  workflow_dispatch:
+    inputs:
+      pull_request_number:
+        description: 'Pull request number'
+        type: number
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v4
+        if:  ${{ github.event_name == 'workflow_dispatch' }}
+        with:
+          ref: refs/pull/${{ inputs.pull_request_number }}/merge
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        if:  ${{ github.event_name != 'workflow_dispatch' }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/metadata-action@v5
+        id: meta_foundation
+        with:
+          images: ghcr.io/${{ github.repository }}-foundation
+          tags: |
+            type=ref,enable=${{ github.event_name != 'workflow_dispatch' }},event=branch
+            type=raw,enable=${{ github.event_name == 'workflow_dispatch' }},value=pr-${{ inputs.pull_request_number }}
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+
+      - uses: docker/build-push-action@v5
+        with:
+          push: true
+          context: .
+          file: ./docker/production/foundation.dockerfile
+          tags: ${{ steps.meta_foundation.outputs.tags }}
+          labels: ${{ steps.meta_foundation.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - uses: docker/metadata-action@v5
+        id: meta_nginx
+        with:
+          images: ghcr.io/${{ github.repository }}-nginx
+          tags: |
+            type=ref,enable=${{ github.event_name != 'workflow_dispatch' }},event=branch
+            type=raw,enable=${{ github.event_name == 'workflow_dispatch' }},value=pr-${{ inputs.pull_request_number }}
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+
+      - uses: docker/build-push-action@v5
+        with:
+          push: true
+          context: .
+          file: ./docker/production/nginx.dockerfile
+          tags: ${{ steps.meta_nginx.outputs.tags }}
+          labels: ${{ steps.meta_nginx.outputs.labels }}
+          build-args: |
+            TISSUE_FOUNDATION_IMAGE_NAME=${{ steps.meta_foundation.outputs.tags }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - uses: docker/metadata-action@v5
+        id: meta_php
+        with:
+          images: ghcr.io/${{ github.repository }}-php
+          tags: |
+            type=ref,enable=${{ github.event_name != 'workflow_dispatch' }},event=branch
+            type=raw,enable=${{ github.event_name == 'workflow_dispatch' }},value=pr-${{ inputs.pull_request_number }}
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+
+      - uses: docker/build-push-action@v5
+        with:
+          push: true
+          context: .
+          file: ./docker/production/php.dockerfile
+          tags: ${{ steps.meta_php.outputs.tags }}
+          labels: ${{ steps.meta_php.outputs.labels }}
+          build-args: |
+            TISSUE_FOUNDATION_IMAGE_NAME=${{ steps.meta_foundation.outputs.tags }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
